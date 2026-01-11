@@ -1,0 +1,217 @@
+
+# Ogham
+type OVERLAY
+
+map key 16 Q
+map key 17 W
+map key 18 E
+map key 19 R
+map key 20 T
+map key 21 Y
+map key 22 U
+map key 23 I
+map key 24 O
+map key 25 P
+map key 30 A
+map key 31 S
+map key 32 D
+map key 33 F
+map key 34 G
+map key 35 H
+map key 36 J
+map key 37 K
+map key 38 L
+map key 40 APOSTROPHE
+map key 43 BACKSLASH
+map key 44 Z
+map key 45 X
+map key 46 C
+map key 47 V
+map key 48 B
+map key 49 N
+map key 50 M
+map key 57 SPACE
+map key 95 NUMPAD_COMMA
+
+key Q {
+  label: '\u168a'
+  base: '\u168a'
+  capslock: '\u168a'
+}
+
+key W {
+  label: '\u1695'
+  base: '\u1695'
+  capslock: '\u1695'
+}
+
+key E {
+  label: '\u1693'
+  base: '\u1693'
+  capslock: '\u1693'
+}
+
+key R {
+  label: '\u168f'
+  base: '\u168f'
+  capslock: '\u168f'
+}
+
+key T {
+  label: '\u1688'
+  base: '\u1688'
+  capslock: '\u1688'
+}
+
+key Y {
+  label: '\u1698'
+  base: '\u1698'
+  capslock: '\u1698'
+}
+
+key U {
+  label: '\u1692'
+  base: '\u1692'
+  capslock: '\u1692'
+}
+
+key I {
+  label: '\u1694'
+  base: '\u1694'
+  capslock: '\u1694'
+}
+
+key O {
+  label: '\u1691'
+  base: '\u1691'
+  capslock: '\u1691'
+}
+
+key P {
+  label: '\u169a'
+  base: '\u169a'
+  capslock: '\u169a'
+}
+
+key A {
+  label: '\u1690'
+  base: '\u1690'
+  capslock: '\u1690'
+}
+
+key S {
+  label: '\u1684'
+  base: '\u1684'
+  capslock: '\u1684'
+}
+
+key D {
+  label: '\u1687'
+  base: '\u1687'
+  capslock: '\u1687'
+}
+
+key F {
+  label: '\u1683'
+  base: '\u1683'
+  capslock: '\u1683'
+}
+
+key G {
+  label: '\u168c'
+  base: '\u168c'
+  capslock: '\u168c'
+}
+
+key H {
+  label: '\u1686'
+  base: '\u1686'
+  capslock: '\u1686'
+}
+
+key J {
+  label: '\u1697'
+  base: '\u1697'
+  capslock: '\u1697'
+}
+
+key K {
+  label: '\u1696'
+  base: '\u1696'
+  capslock: '\u1696'
+}
+
+key L {
+  label: '\u1682'
+  base: '\u1682'
+  capslock: '\u1682'
+}
+
+key APOSTROPHE {
+  label: '\u1680'
+  base: '\u1680'
+}
+
+key BACKSLASH {
+  label: '\u169b'
+  base: '\u169b'
+  shift: '\u169c'
+  capslock+shift: '\u169c'
+}
+
+key Z {
+  label: '\u168e'
+  base: '\u168e'
+  capslock: '\u168e'
+}
+
+key X {
+  label: '\u1699'
+  base: '\u1699'
+  capslock: '\u1699'
+}
+
+key C {
+  label: '\u1689'
+  base: '\u1689'
+  capslock: '\u1689'
+}
+
+key V {
+  label: '\u168d'
+  base: '\u168d'
+  capslock: '\u168d'
+}
+
+key B {
+  label: '\u1681'
+  base: '\u1681'
+  capslock: '\u1681'
+}
+
+key N {
+  label: '\u1685'
+  base: '\u1685'
+  capslock: '\u1685'
+}
+
+key M {
+  label: '\u168b'
+  base: '\u168b'
+  capslock: '\u168b'
+}
+
+key SPACE {
+  label: '\u0020'
+  base: '\u0020'
+  shift: '\u0020'
+  capslock+shift: '\u0020'
+}
+
+key NUMPAD_COMMA {
+  label: '\u002e'
+  base: '\u002e'
+  shift: '\u002e'
+  capslock+shift: '\u002e'
+}
+

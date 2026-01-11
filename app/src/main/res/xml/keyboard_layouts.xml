@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="utf-8"?>
+<keyboard-layouts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <keyboard-layout
+        android:name="abc"
+        android:keyboardLayout="@raw/kcm_abc"
+        android:label="@string/layout_abc" />
+
+    <keyboard-layout
+        android:name="albanian"
+        android:keyboardLayout="@raw/kcm_albanian"
+        android:label="@string/layout_albanian" />
+
+    <keyboard-layout
+        android:name="arabic_102_azerty"
+        android:keyboardLayout="@raw/kcm_arabic_102_azerty"
+        android:label="@string/layout_arabic_102_azerty" />
+
+    <keyboard-layout
+        android:name="armenian_phonetic"
+        android:keyboardLayout="@raw/kcm_armenian_phonetic"
+        android:label="@string/layout_armenian_phonetic" />
+
+    <keyboard-layout
+        android:name="armenian_typewriter"
+        android:keyboardLayout="@raw/kcm_armenian_typewriter"
+        android:label="@string/layout_armenian_typewriter" />
+
+    <keyboard-layout
+        android:name="assamese_inscript"
+        android:keyboardLayout="@raw/kcm_assamese_inscript"
+        android:label="@string/layout_assamese_inscript" />
+
+    <keyboard-layout
+        android:name="azeri_cyrillic"
+        android:keyboardLayout="@raw/kcm_azeri_cyrillic"
+        android:label="@string/layout_azeri_cyrillic" />
+
+    <keyboard-layout
+        android:name="azeri_latin"
+        android:keyboardLayout="@raw/kcm_azeri_latin"
+        android:label="@string/layout_azeri_latin" />
+
+    <keyboard-layout
+        android:name="bangla_jatiya_layout"
+        android:keyboardLayout="@raw/kcm_bangla_jatiya_layout"
+        android:label="@string/layout_bangla_jatiya_layout" />
+
+    <keyboard-layout
+        android:name="bangla_probhat_layout"
+        android:keyboardLayout="@raw/kcm_bangla_probhat_layout"
+        android:label="@string/layout_bangla_probhat_layout" />
+
+    <keyboard-layout
+        android:name="bashkir"
+        android:keyboardLayout="@raw/kcm_bashkir"
+        android:label="@string/layout_bashkir" />
+
+    <keyboard-layout
+        android:name="belarusian"
+        android:keyboardLayout="@raw/kcm_belarusian"
+        android:label="@string/layout_belarusian" />
+
+    <keyboard-layout
+        android:name="belgian_comma"
+        android:keyboardLayout="@raw/kcm_belgian_comma"
+        android:label="@string/layout_belgian_comma" />
+
+    <keyboard-layout
+        android:name="belgian_french"
+        android:keyboardLayout="@raw/kcm_belgian_french"
+        android:label="@string/layout_belgian_french" />
+
+    <keyboard-layout
+        android:name="belgian_period"
+        android:keyboardLayout="@raw/kcm_belgian_period"
+        android:label="@string/layout_belgian_period" />
+
+    <keyboard-layout
+        android:name="bengali"
+        android:keyboardLayout="@raw/kcm_bengali"
+        android:label="@string/layout_bengali" />
+
+    <keyboard-layout
+        android:name="bengali_inscript"
+        android:keyboardLayout="@raw/kcm_bengali_inscript"
+        android:label="@string/layout_bengali_inscript" />
+
+    <keyboard-layout
+        android:name="bosnian_cyrillic"
+        android:keyboardLayout="@raw/kcm_bosnian_cyrillic"
+        android:label="@string/layout_bosnian_cyrillic" />
+
+    <keyboard-layout
+        android:name="bulgarian_latin"
+        android:keyboardLayout="@raw/kcm_bulgarian_latin"
+        android:label="@string/layout_bulgarian_latin" />
+
+    <keyboard-layout
+        android:name="bulgarian_phonetic"
+        android:keyboardLayout="@raw/kcm_bulgarian_phonetic"
+        android:label="@string/layout_bulgarian_phonetic" />
+
+    <keyboard-layout
+        android:name="bulgarian_phonetic_traditional"
+        android:keyboardLayout="@raw/kcm_bulgarian_phonetic_traditional"
+        android:label="@string/layout_bulgarian_phonetic_traditional" />
+
+    <keyboard-layout
+        android:name="bulgarian_typewriter"
+        android:keyboardLayout="@raw/kcm_bulgarian_typewriter"
+        android:label="@string/layout_bulgarian_typewriter" />
+
+    <keyboard-layout
+        android:name="canadian_french"
+        android:keyboardLayout="@raw/kcm_canadian_french"
+        android:label="@string/layout_canadian_french" />
+
+    <keyboard-layout
+        android:name="canadian_multilingual_standard"
+        android:keyboardLayout="@raw/kcm_canadian_multilingual_standard"
+        android:label="@string/layout_canadian_multilingual_standard" />
+
+    <keyboard-layout
+        android:name="cherokee_nation"
+        android:keyboardLayout="@raw/kcm_cherokee_nation"
+        android:label="@string/layout_cherokee_nation" />
+
+    <keyboard-layout
+        android:name="colemak"
+        android:keyboardLayout="@raw/kcm_colemak"
+        android:label="@string/layout_colemak" />
+
+    <keyboard-layout
+        android:name="colemak_mod_dh"
+        android:keyboardLayout="@raw/kcm_colemak_mod_dh"
+        android:label="@string/layout_colemak_mod_dh" />
+
+    <keyboard-layout
+        android:name="czech_programmers"
+        android:keyboardLayout="@raw/kcm_czech_programmers"
+        android:label="@string/layout_czech_programmers" />
+
+    <keyboard-layout
+        android:name="czech_qwerty"
+        android:keyboardLayout="@raw/kcm_czech_qwerty"
+        android:label="@string/layout_czech_qwerty" />
+
+    <keyboard-layout
+        android:name="czech_qwertz"
+        android:keyboardLayout="@raw/kcm_czech_qwertz"
+        android:label="@string/layout_czech_qwertz" />
+
+    <keyboard-layout
+        android:name="devanagari_inscript"
+        android:keyboardLayout="@raw/kcm_devanagari_inscript"
+        android:label="@string/layout_devanagari_inscript" />
+
+    <keyboard-layout
+        android:name="divehi_phonetic"
+        android:keyboardLayout="@raw/kcm_divehi_phonetic"
+        android:label="@string/layout_divehi_phonetic" />
+
+    <keyboard-layout
+        android:name="divehi_typewriter"
+        android:keyboardLayout="@raw/kcm_divehi_typewriter"
+        android:label="@string/layout_divehi_typewriter" />
+
+    <keyboard-layout
+        android:name="dutch"
+        android:keyboardLayout="@raw/kcm_dutch"
+        android:label="@string/layout_dutch" />
+
+    <keyboard-layout
+        android:name="english_india"
+        android:keyboardLayout="@raw/kcm_english_india"
+        android:label="@string/layout_english_india" />
+
+    <keyboard-layout
+        android:name="eu_eurkey"
+        android:keyboardLayout="@raw/kcm_eu_eurkey"
+        android:label="@string/layout_eu_eurkey" />
+
+    <keyboard-layout
+        android:name="faeroese"
+        android:keyboardLayout="@raw/kcm_faeroese"
+        android:label="@string/layout_faeroese" />
+
+    <keyboard-layout
+        android:name="finnish_with_sami"
+        android:keyboardLayout="@raw/kcm_finnish_with_sami"
+        android:label="@string/layout_finnish_with_sami" />
+
+    <keyboard-layout
+        android:name="georgian_ergonomic"
+        android:keyboardLayout="@raw/kcm_georgian_ergonomic"
+        android:label="@string/layout_georgian_ergonomic" />
+
+    <keyboard-layout
+        android:name="georgian_mes"
+        android:keyboardLayout="@raw/kcm_georgian_mes"
+        android:label="@string/layout_georgian_mes" />
+
+    <keyboard-layout
+        android:name="georgian_qwerty"
+        android:keyboardLayout="@raw/kcm_georgian_qwerty"
+        android:label="@string/layout_georgian_qwerty" />
+
+    <keyboard-layout
+        android:name="german_ibm"
+        android:keyboardLayout="@raw/kcm_german_ibm"
+        android:label="@string/layout_german_ibm" />
+
+    <keyboard-layout
+        android:name="greek_220"
+        android:keyboardLayout="@raw/kcm_greek_220"
+        android:label="@string/layout_greek_220" />
+
+    <keyboard-layout
+        android:name="greek_220_latin"
+        android:keyboardLayout="@raw/kcm_greek_220_latin"
+        android:label="@string/layout_greek_220_latin" />
+
+    <keyboard-layout
+        android:name="greek_319_latin"
+        android:keyboardLayout="@raw/kcm_greek_319_latin"
+        android:label="@string/layout_greek_319_latin" />
+
+    <keyboard-layout
+        android:name="greek_latin"
+        android:keyboardLayout="@raw/kcm_greek_latin"
+        android:label="@string/layout_greek_latin" />
+
+    <keyboard-layout
+        android:name="greenlandic"
+        android:keyboardLayout="@raw/kcm_greenlandic"
+        android:label="@string/layout_greenlandic" />
+
+    <keyboard-layout
+        android:name="gujarati"
+        android:keyboardLayout="@raw/kcm_gujarati"
+        android:label="@string/layout_gujarati" />
+
+    <keyboard-layout
+        android:name="halmak"
+        android:keyboardLayout="@raw/kcm_halmak"
+        android:label="@string/layout_halmak" />
+
+    <keyboard-layout
+        android:name="hausa"
+        android:keyboardLayout="@raw/kcm_hausa"
+        android:label="@string/layout_hausa" />
+
+    <keyboard-layout
+        android:name="hawaiian"
+        android:keyboardLayout="@raw/kcm_hawaiian"
+        android:label="@string/layout_hawaiian" />
+
+    <keyboard-layout
+        android:name="hebrew_standard"
+        android:keyboardLayout="@raw/kcm_hebrew_standard"
+        android:label="@string/layout_hebrew_standard" />
+
+    <keyboard-layout
+        android:name="hindi_traditional"
+        android:keyboardLayout="@raw/kcm_hindi_traditional"
+        android:label="@string/layout_hindi_traditional" />
+
+    <keyboard-layout
+        android:name="hungarian_101_key_qwerty"
+        android:keyboardLayout="@raw/kcm_hungarian_101_key_qwerty"
+        android:label="@string/layout_hungarian_101_key_qwerty" />
+
+    <keyboard-layout
+        android:name="inuktitut_latin"
+        android:keyboardLayout="@raw/kcm_inuktitut_latin"
+        android:label="@string/layout_inuktitut_latin" />
+
+    <keyboard-layout
+        android:name="irish"
+        android:keyboardLayout="@raw/kcm_irish"
+        android:label="@string/layout_irish" />
+
+    <keyboard-layout
+        android:name="italian_142"
+        android:keyboardLayout="@raw/kcm_italian_142"
+        android:label="@string/layout_italian_142" />
+
+    <keyboard-layout
+        android:name="jawi_phonetic_qwerty"
+        android:keyboardLayout="@raw/kcm_jawi_phonetic_qwerty"
+        android:label="@string/layout_jawi_phonetic_qwerty" />
+
+    <keyboard-layout
+        android:name="jawi_sirim"
+        android:keyboardLayout="@raw/kcm_jawi_sirim"
+        android:label="@string/layout_jawi_sirim" />
+
+    <keyboard-layout
+        android:name="kannada"
+        android:keyboardLayout="@raw/kcm_kannada"
+        android:label="@string/layout_kannada" />
+
+    <keyboard-layout
+        android:name="kazakh"
+        android:keyboardLayout="@raw/kcm_kazakh"
+        android:label="@string/layout_kazakh" />
+
+    <keyboard-layout
+        android:name="khmer"
+        android:keyboardLayout="@raw/kcm_khmer"
+        android:label="@string/layout_khmer" />
+
+    <keyboard-layout
+        android:name="khmer_nida"
+        android:keyboardLayout="@raw/kcm_khmer_nida"
+        android:label="@string/layout_khmer_nida" />
+
+    <keyboard-layout
+        android:name="korean"
+        android:keyboardLayout="@raw/kcm_korean"
+        android:label="@string/layout_korean" />
+
+    <keyboard-layout
+        android:name="kurdish_krg"
+        android:keyboardLayout="@raw/kcm_kurdish_krg"
+        android:label="@string/layout_kurdish_krg" />
+
+    <keyboard-layout
+        android:name="kurdish_sorani_hejar"
+        android:keyboardLayout="@raw/kcm_kurdish_sorani_hejar"
+        android:label="@string/layout_kurdish_sorani_hejar" />
+
+    <keyboard-layout
+        android:name="kyrgyz_cyrillic"
+        android:keyboardLayout="@raw/kcm_kyrgyz_cyrillic"
+        android:label="@string/layout_kyrgyz_cyrillic" />
+
+    <keyboard-layout
+        android:name="lao"
+        android:keyboardLayout="@raw/kcm_lao"
+        android:label="@string/layout_lao" />
+
+    <keyboard-layout
+        android:name="latin_american"
+        android:keyboardLayout="@raw/kcm_latin_american"
+        android:label="@string/layout_latin_american" />
+
+    <keyboard-layout
+        android:name="latvian_qwerty"
+        android:keyboardLayout="@raw/kcm_latvian_qwerty"
+        android:label="@string/layout_latvian_qwerty" />
+
+    <keyboard-layout
+        android:name="lisu_basic"
+        android:keyboardLayout="@raw/kcm_lisu_basic"
+        android:label="@string/layout_lisu_basic" />
+
+    <keyboard-layout
+        android:name="lisu_standard"
+        android:keyboardLayout="@raw/kcm_lisu_standard"
+        android:label="@string/layout_lisu_standard" />
+
+    <keyboard-layout
+        android:name="lithuanian_ibm"
+        android:keyboardLayout="@raw/kcm_lithuanian_ibm"
+        android:label="@string/layout_lithuanian_ibm" />
+
+    <keyboard-layout
+        android:name="lithuanian_standard"
+        android:keyboardLayout="@raw/kcm_lithuanian_standard"
+        android:label="@string/layout_lithuanian_standard" />
+
+    <keyboard-layout
+        android:name="luxembourgish"
+        android:keyboardLayout="@raw/kcm_luxembourgish"
+        android:label="@string/layout_luxembourgish" />
+
+    <keyboard-layout
+        android:name="macedonian_fyrom"
+        android:keyboardLayout="@raw/kcm_macedonian_fyrom"
+        android:label="@string/layout_macedonian_fyrom" />
+
+    <keyboard-layout
+        android:name="macedonian_fyrom_standard"
+        android:keyboardLayout="@raw/kcm_macedonian_fyrom_standard"
+        android:label="@string/layout_macedonian_fyrom_standard" />
+
+    <keyboard-layout
+        android:name="malayalam"
+        android:keyboardLayout="@raw/kcm_malayalam"
+        android:label="@string/layout_malayalam" />
+
+    <keyboard-layout
+        android:name="maltese_47_key"
+        android:keyboardLayout="@raw/kcm_maltese_47_key"
+        android:label="@string/layout_maltese_47_key" />
+
+    <keyboard-layout
+        android:name="maltese_48_key"
+        android:keyboardLayout="@raw/kcm_maltese_48_key"
+        android:label="@string/layout_maltese_48_key" />
+
+    <keyboard-layout
+        android:name="maori"
+        android:keyboardLayout="@raw/kcm_maori"
+        android:label="@string/layout_maori" />
+
+    <keyboard-layout
+        android:name="marathi"
+        android:keyboardLayout="@raw/kcm_marathi"
+        android:label="@string/layout_marathi" />
+
+    <keyboard-layout
+        android:name="mongolian_cyrillic"
+        android:keyboardLayout="@raw/kcm_mongolian_cyrillic"
+        android:label="@string/layout_mongolian_cyrillic" />
+
+    <keyboard-layout
+        android:name="mongolian_mongolian_script"
+        android:keyboardLayout="@raw/kcm_mongolian_mongolian_script"
+        android:label="@string/layout_mongolian_mongolian_script" />
+
+    <keyboard-layout
+        android:name="myanmar"
+        android:keyboardLayout="@raw/kcm_myanmar"
+        android:label="@string/layout_myanmar" />
+
+    <keyboard-layout
+        android:name="n_ko"
+        android:keyboardLayout="@raw/kcm_n_ko"
+        android:label="@string/layout_n_ko" />
+
+    <keyboard-layout
+        android:name="neo2"
+        android:keyboardLayout="@raw/kcm_neo2"
+        android:label="@string/layout_neo2" />
+
+    <keyboard-layout
+        android:name="nepali"
+        android:keyboardLayout="@raw/kcm_nepali"
+        android:label="@string/layout_nepali" />
+
+    <keyboard-layout
+        android:name="new_tai_lue"
+        android:keyboardLayout="@raw/kcm_new_tai_lue"
+        android:label="@string/layout_new_tai_lue" />
+
+    <keyboard-layout
+        android:name="nias"
+        android:keyboardLayout="@raw/kcm_nias"
+        android:label="@string/layout_nias" />
+
+    <keyboard-layout
+        android:name="norwegian_with_sami"
+        android:keyboardLayout="@raw/kcm_norwegian_with_sami"
+        android:label="@string/layout_norwegian_with_sami" />
+
+    <keyboard-layout
+        android:name="odia"
+        android:keyboardLayout="@raw/kcm_odia"
+        android:label="@string/layout_odia" />
+
+    <keyboard-layout
+        android:name="ogham"
+        android:keyboardLayout="@raw/kcm_ogham"
+        android:label="@string/layout_ogham" />
+
+    <keyboard-layout
+        android:name="pashto_afghanistan"
+        android:keyboardLayout="@raw/kcm_pashto_afghanistan"
+        android:label="@string/layout_pashto_afghanistan" />
+
+    <keyboard-layout
+        android:name="persian_standard"
+        android:keyboardLayout="@raw/kcm_persian_standard"
+        android:label="@string/layout_persian_standard" />
+
+    <keyboard-layout
+        android:name="phags_pa"
+        android:keyboardLayout="@raw/kcm_phags_pa"
+        android:label="@string/layout_phags_pa" />
+
+    <keyboard-layout
+        android:name="polish_programmers"
+        android:keyboardLayout="@raw/kcm_polish_programmers"
+        android:label="@string/layout_polish_programmers" />
+
+    <keyboard-layout
+        android:name="portuguese_magic"
+        android:keyboardLayout="@raw/kcm_portuguese_magic"
+        android:label="@string/layout_portuguese_magic" />
+
+    <keyboard-layout
+        android:name="punjabi"
+        android:keyboardLayout="@raw/kcm_punjabi"
+        android:label="@string/layout_punjabi" />
+
+    <keyboard-layout
+        android:name="romanian_programmers"
+        android:keyboardLayout="@raw/kcm_romanian_programmers"
+        android:label="@string/layout_romanian_programmers" />
+
+    <keyboard-layout
+        android:name="romanian_standard"
+        android:keyboardLayout="@raw/kcm_romanian_standard"
+        android:label="@string/layout_romanian_standard" />
+
+    <keyboard-layout
+        android:name="russian_phonetic_linux"
+        android:keyboardLayout="@raw/kcm_russian_phonetic_linux"
+        android:label="@string/layout_russian_phonetic_linux" />
+
+    <keyboard-layout
+        android:name="russian_phonetic_yawert_winrus_com"
+        android:keyboardLayout="@raw/kcm_russian_phonetic_yawert_winrus_com"
+        android:label="@string/layout_russian_phonetic_yawert_winrus_com" />
+
+    <keyboard-layout
+        android:name="russian_typewriter"
+        android:keyboardLayout="@raw/kcm_russian_typewriter"
+        android:label="@string/layout_russian_typewriter" />
+
+    <keyboard-layout
+        android:name="sakha"
+        android:keyboardLayout="@raw/kcm_sakha"
+        android:label="@string/layout_sakha" />
+
+    <keyboard-layout
+        android:name="sami_extended_finland_sweden"
+        android:keyboardLayout="@raw/kcm_sami_extended_finland_sweden"
+        android:label="@string/layout_sami_extended_finland_sweden" />
+
+    <keyboard-layout
+        android:name="sami_extended_norway"
+        android:keyboardLayout="@raw/kcm_sami_extended_norway"
+        android:label="@string/layout_sami_extended_norway" />
+
+    <keyboard-layout
+        android:name="santali_inscript"
+        android:keyboardLayout="@raw/kcm_santali_inscript"
+        android:label="@string/layout_santali_inscript" />
+
+    <keyboard-layout
+        android:name="santali_sarjom_baha_phonetic"
+        android:keyboardLayout="@raw/kcm_santali_sarjom_baha_phonetic"
+        android:label="@string/layout_santali_sarjom_baha_phonetic" />
+
+    <keyboard-layout
+        android:name="scottish_gaelic"
+        android:keyboardLayout="@raw/kcm_scottish_gaelic"
+        android:label="@string/layout_scottish_gaelic" />
+
+    <keyboard-layout
+        android:name="serbian_cyrillic"
+        android:keyboardLayout="@raw/kcm_serbian_cyrillic"
+        android:label="@string/layout_serbian_cyrillic" />
+
+    <keyboard-layout
+        android:name="serbian_latin"
+        android:keyboardLayout="@raw/kcm_serbian_latin"
+        android:label="@string/layout_serbian_latin" />
+
+    <keyboard-layout
+        android:name="sesotho_sa_leboa"
+        android:keyboardLayout="@raw/kcm_sesotho_sa_leboa"
+        android:label="@string/layout_sesotho_sa_leboa" />
+
+    <keyboard-layout
+        android:name="setswana"
+        android:keyboardLayout="@raw/kcm_setswana"
+        android:label="@string/layout_setswana" />
+
+    <keyboard-layout
+        android:name="sinhala"
+        android:keyboardLayout="@raw/kcm_sinhala"
+        android:label="@string/layout_sinhala" />
+
+    <keyboard-layout
+        android:name="slovak_qwerty"
+        android:keyboardLayout="@raw/kcm_slovak_qwerty"
+        android:label="@string/layout_slovak_qwerty" />
+
+    <keyboard-layout
+        android:name="slovak_qwertz"
+        android:keyboardLayout="@raw/kcm_slovak_qwertz"
+        android:label="@string/layout_slovak_qwertz" />
+
+    <keyboard-layout
+        android:name="sorbian_extended"
+        android:keyboardLayout="@raw/kcm_sorbian_extended"
+        android:label="@string/layout_sorbian_extended" />
+
+    <keyboard-layout
+        android:name="sorbian_standard"
+        android:keyboardLayout="@raw/kcm_sorbian_standard"
+        android:label="@string/layout_sorbian_standard" />
+
+    <keyboard-layout
+        android:name="spanish_variation"
+        android:keyboardLayout="@raw/kcm_spanish_variation"
+        android:label="@string/layout_spanish_variation" />
+
+    <keyboard-layout
+        android:name="swedish_dvorak_a1"
+        android:keyboardLayout="@raw/kcm_swedish_dvorak_a1"
+        android:label="@string/layout_swedish_dvorak_a1" />
+
+    <keyboard-layout
+        android:name="swedish_with_sami"
+        android:keyboardLayout="@raw/kcm_swedish_with_sami"
+        android:label="@string/layout_swedish_with_sami" />
+
+    <keyboard-layout
+        android:name="syriac"
+        android:keyboardLayout="@raw/kcm_syriac"
+        android:label="@string/layout_syriac" />
+
+    <keyboard-layout
+        android:name="syriac_phonetic"
+        android:keyboardLayout="@raw/kcm_syriac_phonetic"
+        android:label="@string/layout_syriac_phonetic" />
+
+    <keyboard-layout
+        android:name="tajik"
+        android:keyboardLayout="@raw/kcm_tajik"
+        android:label="@string/layout_tajik" />
+
+    <keyboard-layout
+        android:name="tamil"
+        android:keyboardLayout="@raw/kcm_tamil"
+        android:label="@string/layout_tamil" />
+
+    <keyboard-layout
+        android:name="tamil99"
+        android:keyboardLayout="@raw/kcm_tamil99"
+        android:label="@string/layout_tamil99" />
+
+    <keyboard-layout
+        android:name="tatar"
+        android:keyboardLayout="@raw/kcm_tatar"
+        android:label="@string/layout_tatar" />
+
+    <keyboard-layout
+        android:name="telugu"
+        android:keyboardLayout="@raw/kcm_telugu"
+        android:label="@string/layout_telugu" />
+
+    <keyboard-layout
+        android:name="thai_kedmanee"
+        android:keyboardLayout="@raw/kcm_thai_kedmanee"
+        android:label="@string/layout_thai_kedmanee" />
+
+    <keyboard-layout
+        android:name="thai_kedmanee_non_shiftlock"
+        android:keyboardLayout="@raw/kcm_thai_kedmanee_non_shiftlock"
+        android:label="@string/layout_thai_kedmanee_non_shiftlock" />
+
+    <keyboard-layout
+        android:name="thai_kedmanee_writer"
+        android:keyboardLayout="@raw/kcm_thai_kedmanee_writer"
+        android:label="@string/layout_thai_kedmanee_writer" />
+
+    <keyboard-layout
+        android:name="thai_kedmanee_writer_non_shiftlock"
+        android:keyboardLayout="@raw/kcm_thai_kedmanee_writer_non_shiftlock"
+        android:label="@string/layout_thai_kedmanee_writer_non_shiftlock" />
+
+    <keyboard-layout
+        android:name="thai_manoonchai"
+        android:keyboardLayout="@raw/kcm_thai_manoonchai"
+        android:label="@string/layout_thai_manoonchai" />
+
+    <keyboard-layout
+        android:name="thai_manoonchai_non_shiftlock"
+        android:keyboardLayout="@raw/kcm_thai_manoonchai_non_shiftlock"
+        android:label="@string/layout_thai_manoonchai_non_shiftlock" />
+
+    <keyboard-layout
+        android:name="thai_manoonchai_writer"
+        android:keyboardLayout="@raw/kcm_thai_manoonchai_writer"
+        android:label="@string/layout_thai_manoonchai_writer" />
+
+    <keyboard-layout
+        android:name="thai_manoonchai_writer_non_shiftlock"
+        android:keyboardLayout="@raw/kcm_thai_manoonchai_writer_non_shiftlock"
+        android:label="@string/layout_thai_manoonchai_writer_non_shiftlock" />
+
+    <keyboard-layout
+        android:name="thai_pattachote"
+        android:keyboardLayout="@raw/kcm_thai_pattachote"
+        android:label="@string/layout_thai_pattachote" />
+
+    <keyboard-layout
+        android:name="thai_pattachote_non_shiftlock"
+        android:keyboardLayout="@raw/kcm_thai_pattachote_non_shiftlock"
+        android:label="@string/layout_thai_pattachote_non_shiftlock" />
+
+    <keyboard-layout
+        android:name="thai_pattachote_writer"
+        android:keyboardLayout="@raw/kcm_thai_pattachote_writer"
+        android:label="@string/layout_thai_pattachote_writer" />
+
+    <keyboard-layout
+        android:name="thai_pattachote_writer_non_shiftlock"
+        android:keyboardLayout="@raw/kcm_thai_pattachote_writer_non_shiftlock"
+        android:label="@string/layout_thai_pattachote_writer_non_shiftlock" />
+
+    <keyboard-layout
+        android:name="thai_tis_820_2538"
+        android:keyboardLayout="@raw/kcm_thai_tis_820_2538"
+        android:label="@string/layout_thai_tis_820_2538" />
+
+    <keyboard-layout
+        android:name="tifinagh_basic"
+        android:keyboardLayout="@raw/kcm_tifinagh_basic"
+        android:label="@string/layout_tifinagh_basic" />
+
+    <keyboard-layout
+        android:name="tifinagh_extended"
+        android:keyboardLayout="@raw/kcm_tifinagh_extended"
+        android:label="@string/layout_tifinagh_extended" />
+
+    <keyboard-layout
+        android:name="turkish_f"
+        android:keyboardLayout="@raw/kcm_turkish_f"
+        android:keyboardLayoutType="turkish_f"
+        android:keyboardLocale="tr-TR"
+        android:label="@string/layout_turkish_f"
+        tools:targetApi="34" />
+
+    <keyboard-layout
+        android:name="turkish_q"
+        android:keyboardLayout="@raw/kcm_turkish_q"
+        android:keyboardLayoutType="turkish_q"
+        android:keyboardLocale="tr-TR"
+        android:label="@string/layout_turkish_q"
+        tools:targetApi="34" />
+
+    <keyboard-layout
+        android:name="turkmen"
+        android:keyboardLayout="@raw/kcm_turkmen"
+        android:label="@string/layout_turkmen" />
+
+    <keyboard-layout
+        android:name="ukrainian_enhanced"
+        android:keyboardLayout="@raw/kcm_ukrainian_enhanced"
+        android:label="@string/layout_ukrainian_enhanced" />
+
+    <keyboard-layout
+        android:name="united_kingdom_extended"
+        android:keyboardLayout="@raw/kcm_united_kingdom_extended"
+        android:label="@string/layout_united_kingdom_extended" />
+
+    <keyboard-layout
+        android:name="united_states_dvorak"
+        android:keyboardLayout="@raw/kcm_united_states_dvorak"
+        android:label="@string/layout_united_states_dvorak" />
+
+    <keyboard-layout
+        android:name="united_states_dvorak_for_left_hand"
+        android:keyboardLayout="@raw/kcm_united_states_dvorak_for_left_hand"
+        android:label="@string/layout_united_states_dvorak_for_left_hand" />
+
+    <keyboard-layout
+        android:name="united_states_dvorak_for_right_hand"
+        android:keyboardLayout="@raw/kcm_united_states_dvorak_for_right_hand"
+        android:label="@string/layout_united_states_dvorak_for_right_hand" />
+
+    <keyboard-layout
+        android:name="united_states_dvorak_programmer"
+        android:keyboardLayout="@raw/kcm_united_states_dvorak_programmer"
+        android:label="@string/layout_united_states_dvorak_programmer" />
+
+    <keyboard-layout
+        android:name="urdu"
+        android:keyboardLayout="@raw/kcm_urdu"
+        android:label="@string/layout_urdu" />
+
+    <keyboard-layout
+        android:name="urdu_phonetic"
+        android:keyboardLayout="@raw/kcm_urdu_phonetic"
+        android:label="@string/layout_urdu_phonetic" />
+
+    <keyboard-layout
+        android:name="us_english_table_for_ibm_arabic_238_l"
+        android:keyboardLayout="@raw/kcm_us_english_table_for_ibm_arabic_238_l"
+        android:label="@string/layout_us_english_table_for_ibm_arabic_238_l" />
+
+    <keyboard-layout
+        android:name="uyghur"
+        android:keyboardLayout="@raw/kcm_uyghur"
+        android:label="@string/layout_uyghur" />
+
+    <keyboard-layout
+        android:name="uzbek_cyrillic"
+        android:keyboardLayout="@raw/kcm_uzbek_cyrillic"
+        android:label="@string/layout_uzbek_cyrillic" />
+
+    <keyboard-layout
+        android:name="vietnamese"
+        android:keyboardLayout="@raw/kcm_vietnamese"
+        android:label="@string/layout_vietnamese" />
+
+    <keyboard-layout
+        android:name="wolof"
+        android:keyboardLayout="@raw/kcm_wolof"
+        android:label="@string/layout_wolof" />
+
+</keyboard-layouts>

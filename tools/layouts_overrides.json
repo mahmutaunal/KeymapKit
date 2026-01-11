@@ -1,0 +1,14 @@
+{
+  "turkish_f": {
+    "label_tr": "Türkçe (F)",
+    "label_en": "Turkish (F)",
+    "locale": "tr-TR",
+    "type": "turkish_f"
+  },
+  "turkish_q": {
+    "label_tr": "Türkçe (Q)",
+    "label_en": "Turkish (Q)",
+    "locale": "tr-TR",
+    "type": "turkish_q"
+  }
+}

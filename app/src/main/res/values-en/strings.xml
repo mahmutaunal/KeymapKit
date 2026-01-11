@@ -167,6 +167,10 @@
 
     <string name="status_title">Status</string>
     <string name="refresh_devices">Refresh Devices</string>
+    <string name="status_layouts_installed">Installed keyboard layouts: Turkish (F), Turkish (Q)</string>
+    <string name="status_keyboards_detected">Physical keyboards detected: %1$d</string>
+
+    <string name="status_devices">Devices:</string>
 
     <string name="setup_title">Setup</string>
     <string name="setup_step_1">1) Connect your physical keyboard.</string>

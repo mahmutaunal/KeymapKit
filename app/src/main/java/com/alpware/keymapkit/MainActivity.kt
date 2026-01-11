@@ -22,10 +22,12 @@ import androidx.compose.ui.input.key.type
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.platform.LocalContext
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.alpware.keymapkit.ui.theme.KeymapKitTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -65,16 +67,17 @@ class MainActivity : ComponentActivity() {
 private fun SetupScreen(
     onOpenKeyboardSettings: () -> Unit
 ) {
+    val context = LocalContext.current
     val scroll = rememberScrollState()
 
     var testInput by remember { mutableStateOf("") }
     var showDebug by remember { mutableStateOf(false) }
     var keyLog by remember { mutableStateOf("") }
-    var deviceSummary by remember { mutableStateOf(buildKeyboardPresenceSummary()) }
+    var deviceSummary by remember { mutableStateOf(buildKeyboardPresenceSummary(context)) }
 
     // Refresh on first composition
     LaunchedEffect(Unit) {
-        deviceSummary = buildKeyboardPresenceSummary()
+        deviceSummary = buildKeyboardPresenceSummary(context)
     }
 
     Column(
@@ -105,7 +108,7 @@ private fun SetupScreen(
 
         StatusCard(
             deviceSummary = deviceSummary,
-            onRefresh = { deviceSummary = buildKeyboardPresenceSummary() }
+            onRefresh = { deviceSummary = buildKeyboardPresenceSummary(context) }
         )
 
         Spacer(Modifier.height(16.dp))
@@ -290,7 +293,7 @@ private fun TroubleshootingCard() {
     }
 }
 
-private fun buildKeyboardPresenceSummary(): String {
+private fun buildKeyboardPresenceSummary(context: android.content.Context): String {
     val ids = InputDevice.getDeviceIds().sorted()
     var keyboards = 0
     val names = mutableListOf<String>()
@@ -305,11 +308,21 @@ private fun buildKeyboardPresenceSummary(): String {
     }
 
     return buildString {
-        append("Keyboard layouts installed: Türkçe (F), Türkçe (Q)\n")
-        append("Physical keyboards detected: ").append(keyboards).append("\n")
+        append(context.getString(R.string.status_layouts_installed))
+        append("\n")
+        append(
+            context.getString(
+                R.string.status_keyboards_detected,
+                keyboards
+            )
+        )
+        append("\n")
         if (names.isNotEmpty()) {
-            append("Devices:\n")
-            names.distinct().forEach { append("• ").append(it).append("\n") }
+            append(context.getString(R.string.status_devices))
+            append("\n")
+            names.distinct().forEach {
+                append("• ").append(it).append("\n")
+            }
         }
     }
 }

@@ -167,6 +167,9 @@
 
     <string name="status_title">Durum</string>
     <string name="refresh_devices">Cihazları yenile</string>
+    <string name="status_layouts_installed">Yüklü klavye düzenleri: Türkçe (F), Türkçe (Q)</string>
+    <string name="status_keyboards_detected">Algılanan fiziksel klavye sayısı: %1$d</string>
+    <string name="status_devices">Cihazlar:</string>
 
     <string name="setup_title">Kurulum</string>
     <string name="setup_step_1">1) Fiziksel klavyeni bağla.</string>

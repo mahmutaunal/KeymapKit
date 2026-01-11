@@ -267,7 +267,7 @@ private fun DebugCard(keyLog: String) {
 
 @Composable
 private fun TroubleshootingCard() {
-    Card {
+    Card(modifier = Modifier.fillMaxWidth()) {
         Column(Modifier.padding(16.dp)) {
             Text(
                 stringResource(R.string.troubleshooting_title),

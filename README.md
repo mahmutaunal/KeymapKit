@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="assets/logo.png" alt="KeymapKit logo" width="128"/>
+</p>
+
+<p align="center">
   <a href="https://play.google.com/store/apps/details?id=com.alpware.kodex">
     <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
          alt="Get it on Google Play"
@@ -7,10 +11,8 @@
 </p>
 
 <p align="center">
-  <img src="assets/logo.png" alt="KeymapKit logo" width="128"/>
+  <strong>KeymapKit</strong><br/>
 </p>
-
-# KeymapKit
 
 <p align="center">
   <strong>Physical keyboard layouts for Android</strong><br/>

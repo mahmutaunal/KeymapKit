@@ -167,7 +167,7 @@
 
     <string name="status_title">Durum</string>
     <string name="refresh_devices">Cihazları yenile</string>
-    <string name="status_layouts_installed">Yüklü klavye düzenleri: Türkçe (F), Türkçe (Q)</string>
+    <string name="status_layouts_installed">KeymapKit klavye düzenleri sisteme eklendi.</string>
     <string name="status_keyboards_detected">Algılanan fiziksel klavye sayısı: %1$d</string>
     <string name="status_devices">Cihazlar:</string>
 

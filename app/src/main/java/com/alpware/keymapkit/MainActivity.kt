@@ -11,6 +11,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
@@ -20,6 +21,8 @@ import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.platform.LocalContext
@@ -73,20 +76,29 @@ private fun SetupScreen(
     var testInput by remember { mutableStateOf("") }
     var showDebug by remember { mutableStateOf(false) }
     var keyLog by remember { mutableStateOf("") }
-    var deviceSummary by remember { mutableStateOf(buildKeyboardPresenceSummary(context)) }
+    var statusState by remember { mutableStateOf(buildKeyboardPresenceState(context)) }
 
     // Refresh on first composition
     LaunchedEffect(Unit) {
-        deviceSummary = buildKeyboardPresenceSummary(context)
+        statusState = buildKeyboardPresenceState(context)
     }
 
-    Column(
+    val maxContentWidth = 680.dp
+
+    Box(
         modifier = Modifier
-            .verticalScroll(scroll)
-            .padding(16.dp)
             .fillMaxSize()
+            .statusBarsPadding()
     ) {
-        Spacer(Modifier.height(16.dp))
+        Column(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .widthIn(max = maxContentWidth)
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .verticalScroll(scroll)
+                .padding(16.dp)
+        ) {
+        Spacer(Modifier.height(4.dp))
 
         Text(
             stringResource(R.string.app_title),
@@ -107,8 +119,10 @@ private fun SetupScreen(
         Spacer(Modifier.height(16.dp))
 
         StatusCard(
-            deviceSummary = deviceSummary,
-            onRefresh = { deviceSummary = buildKeyboardPresenceSummary(context) }
+            layoutsInstalledText = statusState.layoutsInstalledText,
+            keyboardsDetectedText = statusState.keyboardsDetectedText,
+            devices = statusState.devices,
+            onRefresh = { statusState = buildKeyboardPresenceState(context) }
         )
 
         Spacer(Modifier.height(16.dp))
@@ -152,12 +166,15 @@ private fun SetupScreen(
 
         TroubleshootingCard()
         Spacer(Modifier.height(24.dp))
+        }
     }
 }
 
 @Composable
 private fun StatusCard(
-    deviceSummary: String,
+    layoutsInstalledText: String,
+    keyboardsDetectedText: String,
+    devices: List<String>,
     onRefresh: () -> Unit
 ) {
     Card(modifier = Modifier.fillMaxWidth()) {
@@ -166,10 +183,39 @@ private fun StatusCard(
                 stringResource(R.string.status_title),
                 style = MaterialTheme.typography.titleMedium
             )
+
             Spacer(Modifier.height(8.dp))
-            Text(deviceSummary, style = MaterialTheme.typography.bodySmall)
+
+            Text(
+                layoutsInstalledText,
+                style = MaterialTheme.typography.bodySmall
+            )
+
+            Spacer(Modifier.height(6.dp))
+
+            Text(
+                keyboardsDetectedText,
+                style = MaterialTheme.typography.bodySmall
+            )
+
+            if (devices.isNotEmpty()) {
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    stringResource(R.string.status_devices),
+                    style = MaterialTheme.typography.labelSmall
+                )
+                Spacer(Modifier.height(2.dp))
+                devices.forEach {
+                    Text("• $it", style = MaterialTheme.typography.bodySmall)
+                }
+            }
+
             Spacer(Modifier.height(12.dp))
-            OutlinedButton(onClick = onRefresh) {
+
+            OutlinedButton(
+                onClick = onRefresh,
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Text(stringResource(R.string.refresh_devices))
             }
         }
@@ -279,12 +325,12 @@ private fun TroubleshootingCard() {
                 stringResource(R.string.troubleshooting_item_1),
                 style = MaterialTheme.typography.bodySmall
             )
-            Spacer(Modifier.height(4.dp))
+            Spacer(Modifier.height(6.dp))
             Text(
                 stringResource(R.string.troubleshooting_item_2),
                 style = MaterialTheme.typography.bodySmall
             )
-            Spacer(Modifier.height(4.dp))
+            Spacer(Modifier.height(6.dp))
             Text(
                 stringResource(R.string.troubleshooting_item_3),
                 style = MaterialTheme.typography.bodySmall
@@ -293,36 +339,41 @@ private fun TroubleshootingCard() {
     }
 }
 
-private fun buildKeyboardPresenceSummary(context: android.content.Context): String {
+private data class KeyboardStatusState(
+    val layoutsInstalledText: String,
+    val keyboardsDetectedText: String,
+    val devices: List<String>
+)
+
+private fun buildKeyboardPresenceState(
+    context: android.content.Context
+): KeyboardStatusState {
     val ids = InputDevice.getDeviceIds().sorted()
     var keyboards = 0
     val names = mutableListOf<String>()
 
     for (id in ids) {
         val d = InputDevice.getDevice(id) ?: continue
-        val isKeyboard = (d.sources and InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD
-        if (isKeyboard) {
+        val isKeyboardSource =
+            (d.sources and InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD
+
+        val isRealExternalKeyboard =
+            isKeyboardSource &&
+            !d.isVirtual &&
+            d.keyboardType == InputDevice.KEYBOARD_TYPE_ALPHABETIC
+
+        if (isRealExternalKeyboard) {
             keyboards++
             names += d.name
         }
     }
 
-    return buildString {
-        append(context.getString(R.string.status_layouts_installed))
-        append("\n")
-        append(
-            context.getString(
-                R.string.status_keyboards_detected,
-                keyboards
-            )
-        )
-        append("\n")
-        if (names.isNotEmpty()) {
-            append(context.getString(R.string.status_devices))
-            append("\n")
-            names.distinct().forEach {
-                append("• ").append(it).append("\n")
-            }
-        }
-    }
+    return KeyboardStatusState(
+        layoutsInstalledText = context.getString(R.string.status_layouts_installed),
+        keyboardsDetectedText = context.getString(
+            R.string.status_keyboards_detected,
+            keyboards
+        ),
+        devices = names.distinct()
+    )
 }

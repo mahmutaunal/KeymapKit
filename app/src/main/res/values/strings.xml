@@ -193,4 +193,6 @@
     <string name="troubleshooting_item_1">• KeymapKit düzenleri görünmüyorsa: klavyeyi yeniden bağla veya cihazı yeniden başlat.</string>
     <string name="troubleshooting_item_2">• Samsung cihazlarda: “Türkçe (Türkiye)” satırına dokunarak düzenleri gör.</string>
     <string name="troubleshooting_item_3">• Yazım hâlâ yanlışsa: GitHub’da issue aç ve debug çıktısını ekle.</string>
+
+    <string name="developer_signature">AlpWare Studio tarafından geliştirilmiştir</string>
 </resources>

@@ -194,4 +194,6 @@
     <string name="troubleshooting_item_1">• If KeymapKit layouts don’t show up: reconnect the keyboard or restart the device.</string>
     <string name="troubleshooting_item_2">• On Samsung devices: tap “Turkish (Turkey)” to see layout variants.</string>
     <string name="troubleshooting_item_3">• If typing still feels wrong: open an issue and include the debug key events.</string>
+
+    <string name="developer_signature">Developed by AlpWare Studio</string>
 </resources>

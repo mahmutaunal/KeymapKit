@@ -165,6 +165,15 @@ private fun SetupScreen(
         Spacer(Modifier.height(16.dp))
 
         TroubleshootingCard()
+
+        Spacer(Modifier.height(16.dp))
+
+        Text(
+            text = stringResource(R.string.developer_signature),
+            style = MaterialTheme.typography.labelSmall,
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center
+        )
         Spacer(Modifier.height(24.dp))
         }
     }

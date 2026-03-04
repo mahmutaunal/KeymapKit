@@ -195,4 +195,91 @@
     <string name="troubleshooting_item_3">• Yazım hâlâ yanlışsa: GitHub’da issue aç ve debug çıktısını ekle.</string>
 
     <string name="developer_signature">AlpWare Studio tarafından geliştirilmiştir</string>
+
+    <!-- Common -->
+    <string name="cd_back">Geri</string>
+    <string name="action_close">Kapat</string>
+
+    <!-- Settings - header -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_app_name">KeymapKit</string>
+    <string name="settings_app_tagline">Fiziksel klavye düzenleri (TR F/Q). IME değil.</string>
+
+    <!-- Settings - defaults (developer) -->
+    <string name="settings_developer_name">AlpWare Studio</string>
+    <string name="settings_developer_email">contact@alpwarestudio.com</string>
+    <string name="settings_website_url">https://alpwarestudio.com</string>
+
+    <!-- Settings - sections -->
+    <string name="settings_section_about">Hakkında</string>
+    <string name="settings_section_developer">Geliştirici</string>
+    <string name="settings_section_support">Destek</string>
+    <string name="settings_section_legal">Yasal</string>
+
+    <!-- Settings - items -->
+    <string name="settings_item_version">Sürüm</string>
+    <string name="settings_item_repository">Depo (GitHub)</string>
+    <string name="settings_item_email">E-posta</string>
+    <string name="settings_item_website">Web Sitesi</string>
+
+    <string name="settings_item_report_issue">Hata Bildir</string>
+    <string name="settings_item_share_app">Uygulamayı Paylaş</string>
+    <string name="settings_item_rate_play_store">Play Store’da Değerlendir</string>
+
+    <string name="settings_item_privacy_policy">Gizlilik Politikası</string>
+    <string name="settings_item_open_source_notices">Açık Kaynak Bildirimleri</string>
+
+    <!-- Settings - values -->
+    <string name="settings_value_version">%1$s (%2$d)</string>
+    <string name="settings_value_other_apps">Diğer uygulamalar ve yayıncı sayfası</string>
+    <string name="settings_value_github_issues">GitHub Issues</string>
+    <string name="settings_value_send_play_store_link">Play Store bağlantısını gönder</string>
+    <string name="settings_value_leave_review">Yorum Bırak</string>
+    <string name="settings_value_privacy_short">Çevrimdışı. Veri toplanmaz.</string>
+    <string name="settings_value_third_party_licenses">Üçüncü taraf lisansları</string>
+
+    <!-- Settings - share -->
+    <string name="settings_share_title">%1$s paylaş</string>
+    <string name="settings_share_text">%1$s\n%2$s</string>
+
+    <!-- Settings - email -->
+    <string name="settings_email_subject">%1$s geri bildirim</string>
+
+    <!-- Settings - footer -->
+    <string name="settings_footer_tip">İpucu: Uygulamayı çevrimdışı dostu tut—bağlantıları yalnızca gerektiğinde aç.</string>
+
+    <!-- Settings - dialog actions -->
+    <string name="settings_action_view_on_github">GitHub’da görüntüle</string>
+
+    <!-- Settings - dialog: Privacy -->
+    <string name="settings_dialog_privacy_title">Gizlilik Politikası</string>
+    <string name="settings_dialog_privacy_body">
+        Öne çıkanlar
+        • Bu uygulama çevrimdışı çalışır.
+        • Kişisel veri toplanmaz.
+        • Analitik, reklam veya takipçi kullanılmaz.
+        • Veri toplamak için izin istenmez.
+
+        Detaylar
+        Bu uygulama kişisel bilgilerinizi toplamaz, saklamaz veya paylaşmaz. Tüm işlevler cihazınızda yerel olarak çalışır.
+
+        Sorularınız için Ayarlar bölümündeki e-posta üzerinden geliştiriciye ulaşabilirsiniz.
+    </string>
+
+    <!-- Settings - dialog: Notices -->
+    <string name="settings_dialog_notices_title">Açık kaynak bildirimleri</string>
+    <string name="settings_dialog_notices_body">
+        Bu uygulama açık kaynaklıdır ve üçüncü taraf kütüphaneler içerebilir.
+
+        Şunları eklemeniz gerekebilir:
+        • Depoya bağlantı (Ayarlar → Depo)
+        • Proje lisansı (örn. MIT/Apache-2.0)
+        • Bağımlılıklar için gerekli NOTICE dosyaları
+
+        İpucu
+        Tüm lisans metinlerini uygulama içinde göstermek isterseniz res/raw veya assets altına koyup burada görüntüleyebilirsiniz.
+    </string>
+
+    <string name="cd_expand">Genişlet</string>
+    <string name="cd_collapse">Daralt</string>
 </resources>

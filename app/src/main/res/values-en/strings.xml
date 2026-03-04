@@ -196,4 +196,91 @@
     <string name="troubleshooting_item_3">• If typing still feels wrong: open an issue and include the debug key events.</string>
 
     <string name="developer_signature">Developed by AlpWare Studio</string>
+
+    <!-- Common -->
+    <string name="cd_back">Back</string>
+    <string name="action_close">Close</string>
+
+    <!-- Settings - header -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_app_name">KeymapKit</string>
+    <string name="settings_app_tagline">Physical keyboard layouts (TR F/Q). Not an IME.</string>
+
+    <!-- Settings - defaults (developer) -->
+    <string name="settings_developer_name">AlpWare Studio</string>
+    <string name="settings_developer_email">contact@alpwarestudio.com</string>
+    <string name="settings_website_url">https://alpwarestudio.com</string>
+
+    <!-- Settings - sections -->
+    <string name="settings_section_about">About</string>
+    <string name="settings_section_developer">Developer</string>
+    <string name="settings_section_support">Support</string>
+    <string name="settings_section_legal">Legal</string>
+
+    <!-- Settings - items -->
+    <string name="settings_item_version">Version</string>
+    <string name="settings_item_repository">Repository</string>
+    <string name="settings_item_email">Email</string>
+    <string name="settings_item_website">Website</string>
+
+    <string name="settings_item_report_issue">Report an Issue</string>
+    <string name="settings_item_share_app">Share App</string>
+    <string name="settings_item_rate_play_store">Rate on Play Store</string>
+
+    <string name="settings_item_privacy_policy">Privacy Policy</string>
+    <string name="settings_item_open_source_notices">Open source notices</string>
+
+    <!-- Settings - values -->
+    <string name="settings_value_version">%1$s (%2$d)</string>
+    <string name="settings_value_other_apps">Other apps &amp; publisher page</string>
+    <string name="settings_value_github_issues">GitHub Issues</string>
+    <string name="settings_value_send_play_store_link">Send Play Store link</string>
+    <string name="settings_value_leave_review">Leave a review</string>
+    <string name="settings_value_privacy_short">Offline. No data collection.</string>
+    <string name="settings_value_third_party_licenses">Third-party licenses</string>
+
+    <!-- Settings - share -->
+    <string name="settings_share_title">Share %1$s</string>
+    <string name="settings_share_text">%1$s\n%2$s</string>
+
+    <!-- Settings - email -->
+    <string name="settings_email_subject">%1$s feedback</string>
+
+    <!-- Settings - footer -->
+    <string name="settings_footer_tip">Tip: Keep this app offline-friendly—open links only when needed.</string>
+
+    <!-- Settings - dialog actions -->
+    <string name="settings_action_view_on_github">View on GitHub</string>
+
+    <!-- Settings - dialog: Privacy -->
+    <string name="settings_dialog_privacy_title">Privacy Policy</string>
+    <string name="settings_dialog_privacy_body">
+        Key points
+        • This app works offline.
+        • No personal data is collected.
+        • No analytics, ads, or trackers are used.
+        • No permissions are requested for data collection.
+
+        Details
+        This application does not collect, store, or share any personal information. All functionality runs locally on your device.
+
+        If you have questions, contact the developer via the email in Settings.
+    </string>
+
+    <!-- Settings - dialog: Notices -->
+    <string name="settings_dialog_notices_title">Open source notices</string>
+    <string name="settings_dialog_notices_body">
+        This app is open source and may include third-party libraries.
+
+        You may need to include:
+        • A link to the repository (Settings → Repository)
+        • The project LICENSE (e.g., MIT/Apache-2.0)
+        • Any required NOTICE files for dependencies
+
+        Tip
+        If you want to show full license texts in-app, place them under res/raw or assets and render them here.
+    </string>
+
+    <string name="cd_expand">Expand</string>
+    <string name="cd_collapse">Collapse</string>
 </resources>

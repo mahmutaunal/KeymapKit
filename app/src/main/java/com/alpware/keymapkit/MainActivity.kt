@@ -4,29 +4,19 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.provider.Settings
-import android.view.InputDevice
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.key.KeyEventType
-import androidx.compose.ui.input.key.onPreviewKeyEvent
-import androidx.compose.ui.input.key.type
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.Alignment
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.alpware.keymapkit.ui.HomeScreen
+import com.alpware.keymapkit.ui.SettingsScreen
 import com.alpware.keymapkit.ui.theme.KeymapKitTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,340 +39,34 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             KeymapKitTheme {
+                val navController = rememberNavController()
+
                 Surface(Modifier.fillMaxSize()) {
-                    SetupScreen(
-                        onOpenKeyboardSettings = {
-                            // Best-effort: some ROMs may ignore this and open general Settings.
-                            runCatching {
-                                startActivity(Intent(Settings.ACTION_HARD_KEYBOARD_SETTINGS))
-                            }.getOrElse {
-                                startActivity(Intent(Settings.ACTION_SETTINGS))
-                            }
+                    NavHost(
+                        navController = navController,
+                        startDestination = "home"
+                    ) {
+                        composable("home") {
+                            HomeScreen(
+                                onOpenKeyboardSettings = {
+                                    runCatching {
+                                        startActivity(Intent(Settings.ACTION_HARD_KEYBOARD_SETTINGS))
+                                    }.getOrElse {
+                                        startActivity(Intent(Settings.ACTION_SETTINGS))
+                                    }
+                                },
+                                onOpenSettings = { navController.navigate("settings") }
+                            )
                         }
-                    )
+
+                        composable("settings") {
+                            SettingsScreen(
+                                onBack = { navController.popBackStack() }
+                            )
+                        }
+                    }
                 }
             }
         }
     }
-}
-
-@Composable
-private fun SetupScreen(
-    onOpenKeyboardSettings: () -> Unit
-) {
-    val context = LocalContext.current
-    val scroll = rememberScrollState()
-
-    var testInput by remember { mutableStateOf("") }
-    var showDebug by remember { mutableStateOf(false) }
-    var keyLog by remember { mutableStateOf("") }
-    var statusState by remember { mutableStateOf(buildKeyboardPresenceState(context)) }
-
-    // Refresh on first composition
-    LaunchedEffect(Unit) {
-        statusState = buildKeyboardPresenceState(context)
-    }
-
-    val maxContentWidth = 680.dp
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding()
-    ) {
-        Column(
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .widthIn(max = maxContentWidth)
-                .wrapContentWidth(Alignment.CenterHorizontally)
-                .verticalScroll(scroll)
-                .padding(16.dp)
-        ) {
-        Spacer(Modifier.height(4.dp))
-
-        Text(
-            stringResource(R.string.app_title),
-            style = MaterialTheme.typography.headlineSmall,
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
-        )
-
-        Spacer(Modifier.height(4.dp))
-
-        Text(
-            stringResource(R.string.app_subtitle),
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
-        )
-
-        Spacer(Modifier.height(16.dp))
-
-        StatusCard(
-            layoutsInstalledText = statusState.layoutsInstalledText,
-            keyboardsDetectedText = statusState.keyboardsDetectedText,
-            devices = statusState.devices,
-            onRefresh = { statusState = buildKeyboardPresenceState(context) }
-        )
-
-        Spacer(Modifier.height(16.dp))
-
-        SetupStepsCard(onOpenKeyboardSettings = onOpenKeyboardSettings)
-
-        Spacer(Modifier.height(16.dp))
-
-        TestCard(
-            value = testInput,
-            onValueChange = { testInput = it },
-            onKeyLogged = { line ->
-                // prepend
-                keyLog = line + keyLog
-            }
-        )
-
-        Spacer(Modifier.height(12.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            TextButton(onClick = { showDebug = !showDebug }) {
-                Text(if (showDebug) stringResource(R.string.hide_debug) else stringResource(R.string.show_debug))
-            }
-
-            TextButton(onClick = {
-                testInput = ""
-                keyLog = ""
-            }) {
-                Text(stringResource(R.string.clear))
-            }
-        }
-
-        AnimatedVisibility(visible = showDebug) {
-            DebugCard(keyLog = keyLog)
-        }
-
-        Spacer(Modifier.height(16.dp))
-
-        TroubleshootingCard()
-
-        Spacer(Modifier.height(16.dp))
-
-        Text(
-            text = stringResource(R.string.developer_signature),
-            style = MaterialTheme.typography.labelSmall,
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
-        )
-        Spacer(Modifier.height(24.dp))
-        }
-    }
-}
-
-@Composable
-private fun StatusCard(
-    layoutsInstalledText: String,
-    keyboardsDetectedText: String,
-    devices: List<String>,
-    onRefresh: () -> Unit
-) {
-    Card(modifier = Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp)) {
-            Text(
-                stringResource(R.string.status_title),
-                style = MaterialTheme.typography.titleMedium
-            )
-
-            Spacer(Modifier.height(8.dp))
-
-            Text(
-                layoutsInstalledText,
-                style = MaterialTheme.typography.bodySmall
-            )
-
-            Spacer(Modifier.height(6.dp))
-
-            Text(
-                keyboardsDetectedText,
-                style = MaterialTheme.typography.bodySmall
-            )
-
-            if (devices.isNotEmpty()) {
-                Spacer(Modifier.height(6.dp))
-                Text(
-                    stringResource(R.string.status_devices),
-                    style = MaterialTheme.typography.labelSmall
-                )
-                Spacer(Modifier.height(2.dp))
-                devices.forEach {
-                    Text("• $it", style = MaterialTheme.typography.bodySmall)
-                }
-            }
-
-            Spacer(Modifier.height(12.dp))
-
-            OutlinedButton(
-                onClick = onRefresh,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(stringResource(R.string.refresh_devices))
-            }
-        }
-    }
-}
-
-@Composable
-private fun SetupStepsCard(
-    onOpenKeyboardSettings: () -> Unit
-) {
-    Card {
-        Column(Modifier.padding(16.dp)) {
-            Text(stringResource(R.string.setup_title), style = MaterialTheme.typography.titleMedium)
-            Spacer(Modifier.height(8.dp))
-
-            Text(stringResource(R.string.setup_step_1), style = MaterialTheme.typography.bodySmall)
-            Spacer(Modifier.height(6.dp))
-            Text(
-                stringResource(R.string.setup_step_2),
-                style = MaterialTheme.typography.bodySmall
-            )
-            Spacer(Modifier.height(6.dp))
-            Text(stringResource(R.string.setup_step_3), style = MaterialTheme.typography.bodySmall)
-
-            Spacer(Modifier.height(12.dp))
-            Button(
-                onClick = onOpenKeyboardSettings,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(stringResource(R.string.open_keyboard_settings))
-            }
-        }
-    }
-}
-
-@Composable
-private fun TestCard(
-    value: String,
-    onValueChange: (String) -> Unit,
-    onKeyLogged: (String) -> Unit
-) {
-    Card {
-        Column(Modifier.padding(16.dp)) {
-            Text(stringResource(R.string.test_title), style = MaterialTheme.typography.titleMedium)
-            Spacer(Modifier.height(8.dp))
-
-            OutlinedTextField(
-                value = value,
-                onValueChange = onValueChange,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .onPreviewKeyEvent { e ->
-                        if (e.type == KeyEventType.KeyDown) {
-                            val native = e.nativeKeyEvent
-                            val line =
-                                "keyCode=${native.keyCode}, meta=${native.metaState}, unicode=${native.unicodeChar}\n"
-                            onKeyLogged(line)
-                        }
-                        false
-                    },
-                label = { Text(stringResource(R.string.test_label)) },
-                placeholder = { Text(stringResource(R.string.test_placeholder)) },
-                singleLine = false,
-                minLines = 3
-            )
-
-            Spacer(Modifier.height(8.dp))
-            Text(
-                stringResource(R.string.test_tip),
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
-    }
-}
-
-@Composable
-private fun DebugCard(keyLog: String) {
-    Card {
-        Column(Modifier.padding(16.dp)) {
-            Text(stringResource(R.string.debug_title), style = MaterialTheme.typography.titleMedium)
-            Spacer(Modifier.height(8.dp))
-
-            val scroll = rememberScrollState()
-            Text(
-                text = keyLog.ifBlank { stringResource(R.string.debug_empty) },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)
-                    .verticalScroll(scroll),
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
-    }
-}
-
-@Composable
-private fun TroubleshootingCard() {
-    Card(modifier = Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp)) {
-            Text(
-                stringResource(R.string.troubleshooting_title),
-                style = MaterialTheme.typography.titleMedium
-            )
-            Spacer(Modifier.height(8.dp))
-
-            Text(
-                stringResource(R.string.troubleshooting_item_1),
-                style = MaterialTheme.typography.bodySmall
-            )
-            Spacer(Modifier.height(6.dp))
-            Text(
-                stringResource(R.string.troubleshooting_item_2),
-                style = MaterialTheme.typography.bodySmall
-            )
-            Spacer(Modifier.height(6.dp))
-            Text(
-                stringResource(R.string.troubleshooting_item_3),
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
-    }
-}
-
-private data class KeyboardStatusState(
-    val layoutsInstalledText: String,
-    val keyboardsDetectedText: String,
-    val devices: List<String>
-)
-
-private fun buildKeyboardPresenceState(
-    context: android.content.Context
-): KeyboardStatusState {
-    val ids = InputDevice.getDeviceIds().sorted()
-    var keyboards = 0
-    val names = mutableListOf<String>()
-
-    for (id in ids) {
-        val d = InputDevice.getDevice(id) ?: continue
-        val isKeyboardSource =
-            (d.sources and InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD
-
-        val isRealExternalKeyboard =
-            isKeyboardSource &&
-            !d.isVirtual &&
-            d.keyboardType == InputDevice.KEYBOARD_TYPE_ALPHABETIC
-
-        if (isRealExternalKeyboard) {
-            keyboards++
-            names += d.name
-        }
-    }
-
-    return KeyboardStatusState(
-        layoutsInstalledText = context.getString(R.string.status_layouts_installed),
-        keyboardsDetectedText = context.getString(
-            R.string.status_keyboards_detected,
-            keyboards
-        ),
-        devices = names.distinct()
-    )
 }

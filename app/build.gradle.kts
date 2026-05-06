@@ -4,18 +4,18 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-android {
+extensions.configure<com.android.build.api.dsl.ApplicationExtension>("android") {
     namespace = "com.alpware.keymapkit"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {
         applicationId = "com.alpware.keymapkit"
         minSdk = 28
-        targetSdk = 36
-        versionCode = 4
-        versionName = "1.0.2"
+        targetSdk = 37
+        versionCode = 6
+        versionName = "1.0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,14 +35,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
-        }
-    }
     buildFeatures {
         compose = true
         buildConfig = true
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
     }
 }
 

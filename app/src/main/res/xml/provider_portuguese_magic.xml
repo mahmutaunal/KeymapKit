@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<keyboard-layouts xmlns:android="http://schemas.android.com/apk/res/android">
+    <keyboard-layout
+        android:name="portuguese_magic"
+        android:keyboardLayout="@raw/kcm_portuguese_magic"
+        android:label="@string/layout_portuguese_magic" />
+</keyboard-layouts>

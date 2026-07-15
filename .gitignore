@@ -50,6 +50,7 @@ desktop.ini
 
 # Play Store signing configs
 signing.properties
+key.properties
 
 # ======================================================
 # APK / AAB outputs

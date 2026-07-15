@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<keyboard-layouts xmlns:android="http://schemas.android.com/apk/res/android">
+    <keyboard-layout
+        android:name="abc"
+        android:keyboardLayout="@raw/kcm_abc"
+        android:label="@string/layout_abc" />
+</keyboard-layouts>

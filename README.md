@@ -3,6 +3,16 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Android-8.0%2B-brightgreen"/>
+  <img src="https://img.shields.io/badge/Kotlin-2.x-7F52FF"/>
+  <img src="https://img.shields.io/badge/Jetpack-Compose-4285F4"/>
+  <img src="https://img.shields.io/badge/Material-3-2196F3"/>
+  <img src="https://img.shields.io/github/license/mahmutaunal/KeymapKit"/>
+  <img src="https://img.shields.io/github/v/release/mahmutaunal/KeymapKit"/>
+  <img src="https://img.shields.io/github/stars/mahmutaunal/KeymapKit"/>
+</p>
+
+<p align="center">
   <a href="https://play.google.com/store/apps/details?id=com.alpware.keymapkit">
     <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
          alt="Get it on Google Play"
@@ -10,19 +20,35 @@
   </a>
 </p>
 
-<p align="center">
-  <strong>KeymapKit</strong><br/>
-</p>
+<h1 align="center">KeymapKit</h1>
 
 <p align="center">
-  <strong>Physical keyboard layouts for Android</strong><br/>
-  Turkish (F), Turkish (Q) and more — system-level, no IME.
+  <strong>Add missing physical keyboard layouts to Android.</strong><br/>
+  Lightweight • Offline • No Root • No Permissions • Open Source
 </p>
 
-**KeymapKit** is a lightweight Android utility that adds **physical keyboard layouts** (such as **Turkish F**) to the system — **without root, without permissions, and without acting as an on-screen keyboard**.
+---
 
-> This app is **not** a software keyboard (IME).  
-> It only provides **hardware (physical) keyboard layouts** at the system level.
+## ✨ Why KeymapKit?
+
+Android supports external keyboards, but many useful physical keyboard layouts are missing.
+
+KeymapKit fills that gap by adding **system-level physical keyboard layouts** such as:
+
+- 🇹🇷 Turkish F
+- 🇹🇷 Turkish Q
+- and many more in future releases.
+
+Unlike traditional keyboard apps:
+
+- ✅ No on-screen keyboard
+- ✅ No IME
+- ✅ No root
+- ✅ No Accessibility Service
+- ✅ No permissions
+- ✅ Works completely offline
+
+KeymapKit simply provides additional **hardware keyboard layouts** that Android can use.
 
 ---
 
@@ -35,117 +61,238 @@
   <img src="assets/screenshots/en/4.png" width="200"/>
 </p>
 
-**What you see above:**
-- Main screen with status and setup steps
-- Typing test to verify the selected layout
-- System Settings → Physical keyboard showing KeymapKit layouts
-- Dark mode support (Material You)
+Current screens include:
+
+- Home dashboard
+- First-time setup
+- Layout Manager
+- Typing Test
+- Diagnostics
+- Material You interface
+
+---
+
+# 🚀 What's New in KeymapKit 2.0
+
+KeymapKit now installs **only the keyboard layouts you actually need**.
+
+### New First-Time Setup
+
+Choose your preferred layouts during the first launch.
+
+For example:
+
+- Turkish Q
+- Turkish F
+- English US
+- German
+- French
+
+Only selected layouts become available inside Android.
+
+---
+
+### New Layout Manager
+
+Manage installed layouts anytime.
+
+- Add layouts
+- Remove layouts
+- Search layouts
+- View installed layouts
+- Update selections instantly
+
+No reinstall required.
+
+---
+
+### Recommended Layouts
+
+KeymapKit automatically recommends layouts based on your current device language.
+
+Examples:
+
+- Turkish device → Turkish Q + Turkish F
+- English device → English US
+
+---
+
+### Typing Test
+
+Verify your selected layout immediately.
+
+No third-party app is required.
+
+---
+
+### Diagnostics
+
+Built-in diagnostics help verify:
+
+- Physical keyboard detection
+- Active layouts
+- Provider status
+- Connected keyboards
 
 ---
 
 ## ✨ Features
 
-- ✅ Adds physical keyboard layouts
-- ✅ Works system-wide (all apps)
-- ✅ No root required
-- ✅ No permissions required
-- ✅ Offline, lightweight, privacy-friendly
-- ✅ Modern **Material You (Dynamic Color)** UI
-- ✅ Supports Android 8.0+ (API 26+)
+- ✅ System-level physical keyboard layouts
+- ✅ Works in every application
+- ✅ Dynamic layout installation
+- ✅ Layout Manager
+- ✅ Typing Test
+- ✅ Diagnostics
+- ✅ Material 3 / Material You
+- ✅ Dark Mode
+- ✅ Android 8.0+
+- ✅ Lightweight
+- ✅ Offline
+- ✅ Open Source
 
 ---
 
 ## 🧠 How It Works
 
-Android supports physical keyboard layouts via `.kcm` (Key Character Map) files.
+Android supports physical keyboard layouts through `.kcm` (Key Character Map) files.
 
-KeymapKit:
-- Registers itself as a **keyboard layout provider**
-- Supplies `.kcm` layout definitions to the system
-- Lets users select layouts from **System Settings → Physical keyboard**
+KeymapKit registers itself as a **Keyboard Layout Provider** and exposes these layouts directly to Android.
 
-No input method, accessibility service, or special permission is used.
+Unlike an IME:
 
----
+- No text input service
+- No keyboard replacement
+- No accessibility service
+- No background process
 
-## 📱 Setup & Usage
-
-1. **Connect your physical keyboard** (USB or Bluetooth)
-2. Open **Settings → Physical keyboard**
-3. Tap **Turkish (Türkiye)**
-4. Select **“Türkçe (F) — KeymapKit”**
-5. Open KeymapKit and test typing 🎉
-
-> On some Samsung devices, you must tap the language row (e.g. *Türkçe (Türkiye)*) to see layout variants.
+Android itself performs all key mapping.
 
 ---
 
-## 🛡️ Privacy & Permissions
+## 📱 Setup
 
-- 🔒 **No permissions requested**
-- 📡 No network access
-- 👁️ No data collection
-- 🧾 No analytics or trackers
+1. Install KeymapKit
+2. Connect a USB or Bluetooth keyboard
+3. Launch KeymapKit
+4. Select the layouts you want
+5. Open:
 
-KeymapKit only exposes static keyboard layout resources to the Android system.
+```
+Settings
+→ Physical Keyboard
+→ Choose KeymapKit layout
+```
+
+6. Open the built-in Typing Test
+7. Verify everything works
+
+> Samsung devices may require tapping the language entry (for example, "Turkish (Türkiye)") before the available layouts become visible.
 
 ---
 
-## 🧪 Debug & Verification
+## 🔒 Privacy
 
-The app includes a built-in **typing test and debug screen**:
-- Verify that the selected layout works correctly
-- Inspect key events if something feels off
-- Useful for troubleshooting different keyboard models
+KeymapKit follows a strict privacy-first philosophy.
+
+It contains:
+
+- No permissions
+- No analytics
+- No advertising
+- No tracking
+- No accounts
+- No internet communication
+- No cloud services
+
+Everything works locally on your device.
 
 ---
 
 ## 🧩 Supported Layouts
 
-Currently included:
-- 🇹🇷 Turkish (F)
-- 🇹🇷 Turkish (Q)
+Current:
+
+- 🇹🇷 Turkish F
+- 🇹🇷 Turkish Q
 
 Planned:
+
 - 🇺🇸 English (US)
+- 🇬🇧 English (UK)
 - 🇩🇪 German
 - 🇫🇷 French
-- More layouts via an open generator pipeline
+- 🇪🇸 Spanish
+- 🇮🇹 Italian
+- More community layouts
 
 ---
 
-## 🧑‍💻 Tech Stack
+## 🛠 Tech Stack
 
-- **Kotlin**
-- **Jetpack Compose**
-- **Material 3 / Material You**
-- Android Keyboard Layout API (`.kcm`)
-- No legacy views, no XML UI
+- Kotlin
+- Jetpack Compose
+- Material 3
+- Material You
+- Android Keyboard Layout API
+- Kotlin Coroutines
+
+No XML UI.
+
+---
+
+## 🧪 Testing
+
+KeymapKit includes:
+
+- Typing Test
+- Diagnostics
+- Keyboard detection
+- Layout verification
+
+These tools make it easier to validate different USB and Bluetooth keyboards.
 
 ---
 
 ## 📄 Third-Party Notice
 
-Some keyboard layout data (`.kcm` files) are derived from the open-source project:
+Some keyboard layout definitions (`.kcm`) are derived from:
 
-**More Physical Keyboard Layouts / extra-keyboard-layouts**  
-License: MIT License
+**More Physical Keyboard Layouts / extra-keyboard-layouts**
 
-See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) for details.
+Licensed under the MIT License.
+
+See:
+
+```
+THIRD_PARTY_NOTICES.md
+```
+
+for attribution details.
 
 ---
 
-## 📦 Play Store
+## 📦 Google Play
 
-KeymapKit is published on Google Play as a lightweight system utility.
+Download KeymapKit from Google Play:
 
-- No root required
-- No permissions
-- No accessibility usage
-- Not an on-screen keyboard (IME)
+https://play.google.com/store/apps/details?id=com.alpware.keymapkit
 
-👉 **Get it on Google Play:**  
-https://play.google.com/store/apps/details?id=com.alpware.kodex
+---
+
+## 🤝 Contributing
+
+Contributions are always welcome.
+
+Especially:
+
+- New keyboard layouts
+- Documentation
+- Generator improvements
+- Bug fixes
+- Device compatibility reports
+
+Please open an Issue or Pull Request.
 
 ---
 
@@ -153,28 +300,14 @@ https://play.google.com/store/apps/details?id=com.alpware.kodex
 
 Apache License 2.0
 
-You are free to use, modify, and distribute this project under the terms of the license.
+---
+
+## 👨‍💻 Developed by
+
+**AlpWare Studio**
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome!
-
-- Bug reports
-- New keyboard layouts
-- Documentation improvements
-- Generator tools for `.kcm` files
-
-Feel free to open an issue or pull request.
-
----
-
-## ✉️ Contact
-
-Developed by **AlpWare Studio**  
-If you have feedback or layout requests, feel free to open an issue.
-
----
-
-**KeymapKit — because physical keyboards deserve proper layouts.**
+<p align="center">
+<strong>KeymapKit — because physical keyboards deserve proper layouts.</strong>
+</p>

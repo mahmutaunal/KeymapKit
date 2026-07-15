@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
     <application
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,28 +9,656 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.KeymapKit">
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.KeymapKit.Splash">
+        <activity android:name=".MainActivity" android:exported="true" android:theme="@style/Theme.KeymapKit.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <receiver
-            android:name=".receiver.KeyboardLayoutsQueryReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS"/>
-            </intent-filter>
-
-            <meta-data
-                android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS"
-                android:resource="@xml/keyboard_layouts" />
+        <!-- Legacy provider keeps existing users safe until they confirm their selection. -->
+        <receiver android:name=".receiver.KeyboardLayoutsQueryReceiver" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/keyboard_layouts" />
         </receiver>
-
+        <receiver android:name=".receiver.generated.AbcLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_abc" />
+        </receiver>
+        <receiver android:name=".receiver.generated.AlbanianLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_albanian" />
+        </receiver>
+        <receiver android:name=".receiver.generated.Arabic102AzertyLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_arabic_102_azerty" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ArmenianPhoneticLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_armenian_phonetic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ArmenianTypewriterLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_armenian_typewriter" />
+        </receiver>
+        <receiver android:name=".receiver.generated.AssameseInscriptLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_assamese_inscript" />
+        </receiver>
+        <receiver android:name=".receiver.generated.AzeriCyrillicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_azeri_cyrillic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.AzeriLatinLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_azeri_latin" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BanglaJatiyaLayoutLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_bangla_jatiya_layout" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BanglaProbhatLayoutLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_bangla_probhat_layout" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BashkirLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_bashkir" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BelarusianLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_belarusian" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BelgianCommaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_belgian_comma" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BelgianFrenchLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_belgian_french" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BelgianPeriodLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_belgian_period" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BengaliLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_bengali" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BengaliInscriptLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_bengali_inscript" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BosnianCyrillicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_bosnian_cyrillic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BulgarianLatinLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_bulgarian_latin" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BulgarianPhoneticLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_bulgarian_phonetic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BulgarianPhoneticTraditionalLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_bulgarian_phonetic_traditional" />
+        </receiver>
+        <receiver android:name=".receiver.generated.BulgarianTypewriterLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_bulgarian_typewriter" />
+        </receiver>
+        <receiver android:name=".receiver.generated.CanadianFrenchLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_canadian_french" />
+        </receiver>
+        <receiver android:name=".receiver.generated.CanadianMultilingualStandardLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_canadian_multilingual_standard" />
+        </receiver>
+        <receiver android:name=".receiver.generated.CherokeeNationLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_cherokee_nation" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ColemakLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_colemak" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ColemakModDhLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_colemak_mod_dh" />
+        </receiver>
+        <receiver android:name=".receiver.generated.CzechProgrammersLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_czech_programmers" />
+        </receiver>
+        <receiver android:name=".receiver.generated.CzechQwertyLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_czech_qwerty" />
+        </receiver>
+        <receiver android:name=".receiver.generated.CzechQwertzLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_czech_qwertz" />
+        </receiver>
+        <receiver android:name=".receiver.generated.DevanagariInscriptLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_devanagari_inscript" />
+        </receiver>
+        <receiver android:name=".receiver.generated.DivehiPhoneticLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_divehi_phonetic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.DivehiTypewriterLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_divehi_typewriter" />
+        </receiver>
+        <receiver android:name=".receiver.generated.DutchLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_dutch" />
+        </receiver>
+        <receiver android:name=".receiver.generated.EnglishIndiaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_english_india" />
+        </receiver>
+        <receiver android:name=".receiver.generated.EuEurkeyLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_eu_eurkey" />
+        </receiver>
+        <receiver android:name=".receiver.generated.FaeroeseLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_faeroese" />
+        </receiver>
+        <receiver android:name=".receiver.generated.FinnishWithSamiLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_finnish_with_sami" />
+        </receiver>
+        <receiver android:name=".receiver.generated.GeorgianErgonomicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_georgian_ergonomic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.GeorgianMesLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_georgian_mes" />
+        </receiver>
+        <receiver android:name=".receiver.generated.GeorgianQwertyLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_georgian_qwerty" />
+        </receiver>
+        <receiver android:name=".receiver.generated.GermanIbmLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_german_ibm" />
+        </receiver>
+        <receiver android:name=".receiver.generated.Greek220LayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_greek_220" />
+        </receiver>
+        <receiver android:name=".receiver.generated.Greek220LatinLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_greek_220_latin" />
+        </receiver>
+        <receiver android:name=".receiver.generated.Greek319LatinLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_greek_319_latin" />
+        </receiver>
+        <receiver android:name=".receiver.generated.GreekLatinLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_greek_latin" />
+        </receiver>
+        <receiver android:name=".receiver.generated.GreenlandicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_greenlandic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.GujaratiLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_gujarati" />
+        </receiver>
+        <receiver android:name=".receiver.generated.HalmakLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_halmak" />
+        </receiver>
+        <receiver android:name=".receiver.generated.HausaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_hausa" />
+        </receiver>
+        <receiver android:name=".receiver.generated.HawaiianLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_hawaiian" />
+        </receiver>
+        <receiver android:name=".receiver.generated.HebrewStandardLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_hebrew_standard" />
+        </receiver>
+        <receiver android:name=".receiver.generated.HindiTraditionalLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_hindi_traditional" />
+        </receiver>
+        <receiver android:name=".receiver.generated.Hungarian101KeyQwertyLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_hungarian_101_key_qwerty" />
+        </receiver>
+        <receiver android:name=".receiver.generated.InuktitutLatinLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_inuktitut_latin" />
+        </receiver>
+        <receiver android:name=".receiver.generated.IrishLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_irish" />
+        </receiver>
+        <receiver android:name=".receiver.generated.Italian142LayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_italian_142" />
+        </receiver>
+        <receiver android:name=".receiver.generated.JawiPhoneticQwertyLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_jawi_phonetic_qwerty" />
+        </receiver>
+        <receiver android:name=".receiver.generated.JawiSirimLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_jawi_sirim" />
+        </receiver>
+        <receiver android:name=".receiver.generated.KannadaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_kannada" />
+        </receiver>
+        <receiver android:name=".receiver.generated.KazakhLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_kazakh" />
+        </receiver>
+        <receiver android:name=".receiver.generated.KhmerLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_khmer" />
+        </receiver>
+        <receiver android:name=".receiver.generated.KhmerNidaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_khmer_nida" />
+        </receiver>
+        <receiver android:name=".receiver.generated.KoreanLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_korean" />
+        </receiver>
+        <receiver android:name=".receiver.generated.KurdishKrgLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_kurdish_krg" />
+        </receiver>
+        <receiver android:name=".receiver.generated.KurdishSoraniHejarLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_kurdish_sorani_hejar" />
+        </receiver>
+        <receiver android:name=".receiver.generated.KyrgyzCyrillicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_kyrgyz_cyrillic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.LaoLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_lao" />
+        </receiver>
+        <receiver android:name=".receiver.generated.LatinAmericanLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_latin_american" />
+        </receiver>
+        <receiver android:name=".receiver.generated.LatvianQwertyLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_latvian_qwerty" />
+        </receiver>
+        <receiver android:name=".receiver.generated.LisuBasicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_lisu_basic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.LisuStandardLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_lisu_standard" />
+        </receiver>
+        <receiver android:name=".receiver.generated.LithuanianIbmLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_lithuanian_ibm" />
+        </receiver>
+        <receiver android:name=".receiver.generated.LithuanianStandardLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_lithuanian_standard" />
+        </receiver>
+        <receiver android:name=".receiver.generated.LuxembourgishLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_luxembourgish" />
+        </receiver>
+        <receiver android:name=".receiver.generated.MacedonianFyromLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_macedonian_fyrom" />
+        </receiver>
+        <receiver android:name=".receiver.generated.MacedonianFyromStandardLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_macedonian_fyrom_standard" />
+        </receiver>
+        <receiver android:name=".receiver.generated.MalayalamLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_malayalam" />
+        </receiver>
+        <receiver android:name=".receiver.generated.Maltese47KeyLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_maltese_47_key" />
+        </receiver>
+        <receiver android:name=".receiver.generated.Maltese48KeyLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_maltese_48_key" />
+        </receiver>
+        <receiver android:name=".receiver.generated.MaoriLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_maori" />
+        </receiver>
+        <receiver android:name=".receiver.generated.MarathiLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_marathi" />
+        </receiver>
+        <receiver android:name=".receiver.generated.MongolianCyrillicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_mongolian_cyrillic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.MongolianMongolianScriptLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_mongolian_mongolian_script" />
+        </receiver>
+        <receiver android:name=".receiver.generated.MyanmarLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_myanmar" />
+        </receiver>
+        <receiver android:name=".receiver.generated.NKoLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_n_ko" />
+        </receiver>
+        <receiver android:name=".receiver.generated.Neo2LayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_neo2" />
+        </receiver>
+        <receiver android:name=".receiver.generated.NepaliLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_nepali" />
+        </receiver>
+        <receiver android:name=".receiver.generated.NewTaiLueLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_new_tai_lue" />
+        </receiver>
+        <receiver android:name=".receiver.generated.NiasLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_nias" />
+        </receiver>
+        <receiver android:name=".receiver.generated.NorwegianWithSamiLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_norwegian_with_sami" />
+        </receiver>
+        <receiver android:name=".receiver.generated.OdiaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_odia" />
+        </receiver>
+        <receiver android:name=".receiver.generated.OghamLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_ogham" />
+        </receiver>
+        <receiver android:name=".receiver.generated.PashtoAfghanistanLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_pashto_afghanistan" />
+        </receiver>
+        <receiver android:name=".receiver.generated.PersianStandardLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_persian_standard" />
+        </receiver>
+        <receiver android:name=".receiver.generated.PhagsPaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_phags_pa" />
+        </receiver>
+        <receiver android:name=".receiver.generated.PolishProgrammersLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_polish_programmers" />
+        </receiver>
+        <receiver android:name=".receiver.generated.PortugueseMagicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_portuguese_magic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.PunjabiLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_punjabi" />
+        </receiver>
+        <receiver android:name=".receiver.generated.RomanianProgrammersLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_romanian_programmers" />
+        </receiver>
+        <receiver android:name=".receiver.generated.RomanianStandardLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_romanian_standard" />
+        </receiver>
+        <receiver android:name=".receiver.generated.RussianPhoneticLinuxLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_russian_phonetic_linux" />
+        </receiver>
+        <receiver android:name=".receiver.generated.RussianPhoneticYawertWinrusComLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_russian_phonetic_yawert_winrus_com" />
+        </receiver>
+        <receiver android:name=".receiver.generated.RussianTypewriterLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_russian_typewriter" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SakhaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_sakha" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SamiExtendedFinlandSwedenLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_sami_extended_finland_sweden" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SamiExtendedNorwayLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_sami_extended_norway" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SantaliInscriptLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_santali_inscript" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SantaliSarjomBahaPhoneticLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_santali_sarjom_baha_phonetic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ScottishGaelicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_scottish_gaelic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SerbianCyrillicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_serbian_cyrillic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SerbianLatinLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_serbian_latin" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SesothoSaLeboaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_sesotho_sa_leboa" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SetswanaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_setswana" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SinhalaLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_sinhala" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SlovakQwertyLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_slovak_qwerty" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SlovakQwertzLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_slovak_qwertz" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SorbianExtendedLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_sorbian_extended" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SorbianStandardLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_sorbian_standard" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SpanishVariationLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_spanish_variation" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SwedishDvorakA1LayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_swedish_dvorak_a1" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SwedishWithSamiLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_swedish_with_sami" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SyriacLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_syriac" />
+        </receiver>
+        <receiver android:name=".receiver.generated.SyriacPhoneticLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_syriac_phonetic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.TajikLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_tajik" />
+        </receiver>
+        <receiver android:name=".receiver.generated.TamilLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_tamil" />
+        </receiver>
+        <receiver android:name=".receiver.generated.Tamil99LayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_tamil99" />
+        </receiver>
+        <receiver android:name=".receiver.generated.TatarLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_tatar" />
+        </receiver>
+        <receiver android:name=".receiver.generated.TeluguLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_telugu" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiKedmaneeLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_kedmanee" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiKedmaneeNonShiftlockLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_kedmanee_non_shiftlock" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiKedmaneeWriterLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_kedmanee_writer" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiKedmaneeWriterNonShiftlockLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_kedmanee_writer_non_shiftlock" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiManoonchaiLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_manoonchai" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiManoonchaiNonShiftlockLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_manoonchai_non_shiftlock" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiManoonchaiWriterLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_manoonchai_writer" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiManoonchaiWriterNonShiftlockLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_manoonchai_writer_non_shiftlock" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiPattachoteLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_pattachote" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiPattachoteNonShiftlockLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_pattachote_non_shiftlock" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiPattachoteWriterLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_pattachote_writer" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiPattachoteWriterNonShiftlockLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_pattachote_writer_non_shiftlock" />
+        </receiver>
+        <receiver android:name=".receiver.generated.ThaiTis8202538LayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_thai_tis_820_2538" />
+        </receiver>
+        <receiver android:name=".receiver.generated.TifinaghBasicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_tifinagh_basic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.TifinaghExtendedLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_tifinagh_extended" />
+        </receiver>
+        <receiver android:name=".receiver.generated.TurkishFLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_turkish_f" />
+        </receiver>
+        <receiver android:name=".receiver.generated.TurkishQLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_turkish_q" />
+        </receiver>
+        <receiver android:name=".receiver.generated.TurkmenLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_turkmen" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UkrainianEnhancedLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_ukrainian_enhanced" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UnitedKingdomExtendedLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_united_kingdom_extended" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UnitedStatesDvorakLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_united_states_dvorak" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UnitedStatesDvorakForLeftHandLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_united_states_dvorak_for_left_hand" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UnitedStatesDvorakForRightHandLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_united_states_dvorak_for_right_hand" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UnitedStatesDvorakProgrammerLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_united_states_dvorak_programmer" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UrduLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_urdu" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UrduPhoneticLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_urdu_phonetic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UsEnglishTableForIbmArabic238LLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_us_english_table_for_ibm_arabic_238_l" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UyghurLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_uyghur" />
+        </receiver>
+        <receiver android:name=".receiver.generated.UzbekCyrillicLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_uzbek_cyrillic" />
+        </receiver>
+        <receiver android:name=".receiver.generated.VietnameseLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_vietnamese" />
+        </receiver>
+        <receiver android:name=".receiver.generated.WolofLayoutReceiver" android:enabled="false" android:exported="true">
+            <intent-filter><action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" /></intent-filter>
+            <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS" android:resource="@xml/provider_wolof" />
+        </receiver>
     </application>
 </manifest>

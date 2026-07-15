@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<keyboard-layouts xmlns:android="http://schemas.android.com/apk/res/android">
+    <keyboard-layout
+        android:name="latvian_qwerty"
+        android:keyboardLayout="@raw/kcm_latvian_qwerty"
+        android:label="@string/layout_latvian_qwerty" />
+</keyboard-layouts>

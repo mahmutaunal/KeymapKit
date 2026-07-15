@@ -282,4 +282,32 @@
 
     <string name="cd_expand">Genişlet</string>
     <string name="cd_collapse">Daralt</string>
+
+    <string name="onboarding_title">Başlangıç</string>
+    <string name="onboarding_heading">Kullanacağınız düzenleri seçin</string>
+    <string name="onboarding_body">Yalnızca seçtiğiniz fiziksel klavye düzenleri Android sistemine sunulur. Bu seçimi daha sonra değiştirebilirsiniz.</string>
+    <string name="recommended_layouts">Önerilen ve popüler düzenler</string>
+    <string name="continue_with_count">%1$d düzenle devam et</string>
+    <string name="use_recommended">Önerilenleri kullan</string>
+    <string name="manage_layouts">Düzenleri yönet</string>
+    <string name="search_layouts">Düzen ara</string>
+    <string name="all_layouts">Tümü</string>
+    <string name="selected_count">%1$d düzen etkin</string>
+    <string name="home_heading">Fiziksel klavyeniz, sizin düzeniniz</string>
+    <string name="home_body">İhtiyacınız olan düzenleri etkinleştirin, ardından Android fiziksel klavye ayarlarından klavyenize atayın.</string>
+    <string name="active_layouts">Etkin düzenler</string>
+    <string name="active_layouts_count">%1$d düzen</string>
+    <string name="diagnostics_title">Tanılama</string>
+    <string name="provider_status">Layout sağlayıcısı</string>
+    <string name="provider_ready">Hazır</string>
+    <string name="physical_keyboards">Algılanan fiziksel klavye</string>
+    <string name="setup_steps_compact">1. Klavyenizi bağlayın.
+2. Fiziksel klavye ayarlarını açın.
+3. Klavyeniz için KeymapKit düzenini seçin.</string>
+    <string name="open_physical_keyboard_settings">Fiziksel klavye ayarlarını aç</string>
+    <string name="preview_title">Düzeni test edin</string>
+    <string name="preview_body">Sistem ayarlarından düzeni seçtikten sonra tuşların beklediğiniz karakterleri ürettiğini burada doğrulayın.</string>
+    <string name="preview_placeholder">Buraya yazın…</string>
+    <string name="layout_change_warning">Bir klavyede aktif olarak kullanılan düzeni kaldırırsanız Android varsayılan düzene dönebilir. Değişiklikten sonra fiziksel klavye ayarlarını kontrol edin.</string>
+    <string name="action_refresh">Yenile</string>
 </resources>

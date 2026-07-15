@@ -283,4 +283,32 @@
 
     <string name="cd_expand">Expand</string>
     <string name="cd_collapse">Collapse</string>
+
+    <string name="onboarding_title">Setup</string>
+    <string name="onboarding_heading">Choose the layouts you use</string>
+    <string name="onboarding_body">Only the physical keyboard layouts you select are exposed to Android. You can change this selection later.</string>
+    <string name="recommended_layouts">Recommended and popular layouts</string>
+    <string name="continue_with_count">Continue with %1$d layouts</string>
+    <string name="use_recommended">Use recommended</string>
+    <string name="manage_layouts">Manage layouts</string>
+    <string name="search_layouts">Search layouts</string>
+    <string name="all_layouts">All</string>
+    <string name="selected_count">%1$d layouts enabled</string>
+    <string name="home_heading">Your physical keyboard, your layout</string>
+    <string name="home_body">Enable only the layouts you need, then assign one to your keyboard from Android physical keyboard settings.</string>
+    <string name="active_layouts">Enabled layouts</string>
+    <string name="active_layouts_count">%1$d layouts</string>
+    <string name="diagnostics_title">Diagnostics</string>
+    <string name="provider_status">Layout provider</string>
+    <string name="provider_ready">Ready</string>
+    <string name="physical_keyboards">Detected physical keyboards</string>
+    <string name="setup_steps_compact">1. Connect your keyboard.
+2. Open physical keyboard settings.
+3. Select a KeymapKit layout for your keyboard.</string>
+    <string name="open_physical_keyboard_settings">Open physical keyboard settings</string>
+    <string name="preview_title">Test your layout</string>
+    <string name="preview_body">After selecting the layout in system settings, verify here that the keys produce the expected characters.</string>
+    <string name="preview_placeholder">Type here…</string>
+    <string name="layout_change_warning">Removing a layout currently assigned to a keyboard may make Android fall back to its default layout. Check physical keyboard settings after making changes.</string>
+    <string name="action_refresh">Refresh</string>
 </resources>

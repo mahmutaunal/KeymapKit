@@ -19,34 +19,86 @@ import com.alpware.keymapkit.layout.LayoutSelectionRepository
 fun OnboardingScreen(repository: LayoutSelectionRepository, onDone: () -> Unit) {
     val recommended = remember { repository.recommendedIds() }
     var selected by remember { mutableStateOf(recommended) }
-    val items = remember { KeyboardLayoutCatalog.all.filter { it.id in recommended || it.popular }.distinctBy { it.id } }
+    val items = remember {
+        KeyboardLayoutCatalog.all.filter { it.id in recommended || it.popular }.distinctBy { it.id }
+    }
 
-    Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.onboarding_title)) }) }) { padding ->
-        Column(Modifier.fillMaxSize().padding(padding).padding(horizontal = 20.dp)) {
+    Scaffold(topBar = {
+        TopAppBar(
+            title = { Text(stringResource(R.string.onboarding_title)) },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.background,
+                scrolledContainerColor = MaterialTheme.colorScheme.background
+            )
+        )
+    }) { padding ->
+        Column(
+            Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(horizontal = 20.dp)
+        ) {
             Icon(Icons.Outlined.Keyboard, null, modifier = Modifier.size(48.dp))
             Spacer(Modifier.height(12.dp))
-            Text(stringResource(R.string.onboarding_heading), style = MaterialTheme.typography.headlineSmall)
+            Text(
+                stringResource(R.string.onboarding_heading),
+                style = MaterialTheme.typography.headlineSmall
+            )
             Spacer(Modifier.height(8.dp))
-            Text(stringResource(R.string.onboarding_body), color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(
+                stringResource(R.string.onboarding_body),
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
             Spacer(Modifier.height(16.dp))
-            Text(stringResource(R.string.recommended_layouts), style = MaterialTheme.typography.titleMedium)
+            Text(
+                stringResource(R.string.recommended_layouts),
+                style = MaterialTheme.typography.titleMedium
+            )
             LazyColumn(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 items(items, key = { it.id }) { item ->
                     Card(Modifier.fillMaxWidth()) {
-                        Row(Modifier.fillMaxWidth().padding(12.dp), horizontalArrangement = Arrangement.SpaceBetween) {
+                        Row(
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(12.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
                             Column(Modifier.weight(1f)) {
-                                Text(stringResource(item.labelRes), style = MaterialTheme.typography.bodyLarge)
-                                Text(item.category.name.lowercase().replaceFirstChar { it.titlecase() }, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                Text(
+                                    stringResource(item.labelRes),
+                                    style = MaterialTheme.typography.bodyLarge
+                                )
+                                Text(
+                                    item.category.name.lowercase()
+                                        .replaceFirstChar { it.titlecase() },
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
                             }
-                            Checkbox(checked = item.id in selected, onCheckedChange = { checked -> selected = selected.toMutableSet().apply { if (checked) add(item.id) else remove(item.id) } })
+                            Checkbox(
+                                checked = item.id in selected,
+                                onCheckedChange = { checked ->
+                                    selected = selected.toMutableSet()
+                                        .apply { if (checked) add(item.id) else remove(item.id) }
+                                })
                         }
                     }
                 }
             }
-            Button(onClick = { repository.applySelection(selected); onDone() }, enabled = selected.isNotEmpty(), modifier = Modifier.fillMaxWidth()) {
+            Button(
+                onClick = { repository.applySelection(selected); onDone() },
+                enabled = selected.isNotEmpty(),
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Text(stringResource(R.string.continue_with_count, selected.size))
             }
-            TextButton(onClick = { repository.applySelection(recommended.ifEmpty { setOf(KeyboardLayoutCatalog.all.first().id) }); onDone() }, modifier = Modifier.fillMaxWidth()) {
+            TextButton(onClick = {
+                repository.applySelection(recommended.ifEmpty {
+                    setOf(
+                        KeyboardLayoutCatalog.all.first().id
+                    )
+                }); onDone()
+            }, modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(R.string.use_recommended))
             }
             Spacer(Modifier.height(12.dp))

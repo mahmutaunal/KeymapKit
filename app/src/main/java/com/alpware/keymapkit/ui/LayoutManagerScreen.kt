@@ -20,7 +20,11 @@ import com.alpware.keymapkit.layout.LayoutSelectionRepository
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LayoutManagerScreen(repository: LayoutSelectionRepository, onBack: () -> Unit) {
+fun LayoutManagerScreen(
+    repository: LayoutSelectionRepository,
+    onBack: () -> Unit,
+    onLayoutChanged: () -> Unit
+) {
     var query by remember { mutableStateOf("") }
     var selected by remember { mutableStateOf(repository.selectedIds()) }
     var category by remember { mutableStateOf<LayoutCategory?>(null) }
@@ -66,9 +70,11 @@ fun LayoutManagerScreen(repository: LayoutSelectionRepository, onBack: () -> Uni
                 singleLine = true
             )
             ScrollableTabRow(
-                selectedTabIndex = (LayoutCategory.entries.indexOf(category) + 1).coerceAtLeast(
-                    0
-                ), edgePadding = 12.dp
+                selectedTabIndex = (
+                        LayoutCategory.entries.indexOf(category) + 1
+                        ).coerceAtLeast(0),
+                edgePadding = 12.dp,
+                containerColor = MaterialTheme.colorScheme.background
             ) {
                 Tab(
                     selected = category == null,
@@ -112,15 +118,18 @@ fun LayoutManagerScreen(repository: LayoutSelectionRepository, onBack: () -> Uni
                                     repository.setSelected(
                                         item.id,
                                         value
-                                    ); selected = repository.selectedIds()
+                                    ); selected = repository.selectedIds(); onLayoutChanged()
                                 })
                         },
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
                                 repository.setSelected(item.id, !checked); selected =
-                                repository.selectedIds()
-                            }
+                                repository.selectedIds(); onLayoutChanged()
+                            },
+                        colors = ListItemDefaults.colors(
+                            containerColor = MaterialTheme.colorScheme.background
+                        )
                     )
                     HorizontalDivider()
                 }

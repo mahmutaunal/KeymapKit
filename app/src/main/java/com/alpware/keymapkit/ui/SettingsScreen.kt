@@ -28,12 +28,14 @@ import androidx.compose.material.icons.outlined.PrivacyTip
 import androidx.compose.material.icons.outlined.RateReview
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.Storefront
+import androidx.compose.material.icons.outlined.SystemUpdate
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -59,6 +61,8 @@ import androidx.core.net.toUri
 @Composable
 fun SettingsScreen(
     onBack: () -> Unit,
+    onRequestReview: () -> Unit,
+    onCheckForUpdate: () -> Unit,
     modifier: Modifier = Modifier,
     appName: String? = null,
     appTagline: String? = null,
@@ -191,7 +195,13 @@ fun SettingsScreen(
                 title = stringResource(R.string.settings_item_rate_play_store),
                 subtitle = stringResource(R.string.settings_value_leave_review),
                 trailing = Icons.AutoMirrored.Outlined.OpenInNew,
-                onClick = { openUrl(context, playStoreAppUrl) }
+                onClick = onRequestReview
+            )
+            SettingsRow(
+                leading = Icons.Outlined.SystemUpdate,
+                title = stringResource(R.string.settings_item_check_updates),
+                subtitle = stringResource(R.string.settings_value_check_updates),
+                onClick = onCheckForUpdate
             )
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 6.dp))
@@ -333,6 +343,9 @@ private fun SettingsRow(
         },
         modifier = Modifier.then(
             if (clickable) Modifier.clickable(onClick = onClick) else Modifier
+        ),
+        colors = ListItemDefaults.colors(
+            containerColor = MaterialTheme.colorScheme.background
         )
     )
 }

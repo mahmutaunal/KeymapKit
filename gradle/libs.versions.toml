@@ -1,5 +1,5 @@
 [versions]
-agp = "9.3.0"
+agp = "9.3.1"
 kotlin = "2.4.10"
 coreKtx = "1.19.0"
 junit = "4.13.2"
@@ -11,6 +11,8 @@ composeBom = "2026.06.01"
 material = "1.14.0"
 navigationCompose = "2.9.8"
 splashscreen = "1.2.0"
+playReview = "2.0.2"
+playUpdate = "2.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,6 +33,8 @@ material = { module = "com.google.android.material:material", version.ref = "mat
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splashscreen" }
 androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+play-review = { module = "com.google.android.play:review", version.ref = "playReview" }
+play-update = { module = "com.google.android.play:app-update", version.ref = "playUpdate" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -12,6 +12,7 @@ import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -30,6 +31,8 @@ fun HomeScreen(
     val context = LocalContext.current
     var selectedCount by remember { mutableIntStateOf(repository.selectedIds().size) }
     var keyboards by remember { mutableStateOf(detectKeyboards(context)) }
+    var previewText by rememberSaveable { mutableStateOf("") }
+
     Scaffold(topBar = {
         TopAppBar(
             title = { Text(stringResource(R.string.app_title)) },
@@ -143,10 +146,13 @@ fun HomeScreen(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     OutlinedTextField(
-                        value = "",
-                        onValueChange = {},
+                        value = previewText,
+                        onValueChange = { previewText = it },
                         modifier = Modifier.fillMaxWidth(),
-                        placeholder = { Text(stringResource(R.string.preview_placeholder)) })
+                        placeholder = {
+                            Text(stringResource(R.string.preview_placeholder))
+                        }
+                    )
                 }
             }
 

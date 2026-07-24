@@ -311,3 +311,8 @@ Apache License 2.0
 <p align="center">
 <strong>KeymapKit — because physical keyboards deserve proper layouts.</strong>
 </p>
+## Google Play experience
+
+KeymapKit uses the official Google Play In-App Review and In-App Updates APIs. Automatic review requests are intentionally conservative and are evaluated only after repeated successful use: multiple layout changes, opening physical keyboard settings, multiple sessions, and at least two days since first use. Google Play always decides whether the review card is shown.
+
+All eligibility counters remain on the device in `SharedPreferences`; no analytics SDK or network telemetry is used.

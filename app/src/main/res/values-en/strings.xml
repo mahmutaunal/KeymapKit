@@ -311,4 +311,17 @@
     <string name="preview_placeholder">Type here…</string>
     <string name="layout_change_warning">Removing a layout currently assigned to a keyboard may make Android fall back to its default layout. Check physical keyboard settings after making changes.</string>
     <string name="action_refresh">Refresh</string>
+    <string name="settings_item_check_updates">Check for Updates</string>
+    <string name="settings_value_check_updates">Look for a new version on Google Play</string>
+    <string name="review_flow_completed">Review request completed. Thank you.</string>
+    <string name="review_flow_unavailable">Reviews are currently unavailable.</string>
+    <string name="update_cancelled">Update cancelled.</string>
+    <string name="update_not_available">KeymapKit is up to date.</string>
+    <string name="update_check_failed">Could not check for updates. Check your internet connection.</string>
+    <string name="update_not_supported">In-app updates are not supported on this device.</string>
+    <string name="update_error">An error occurred during the update.</string>
+    <string name="update_ready_title">Update ready</string>
+    <string name="update_ready_message">The new version has been downloaded. Restart the app to finish updating.</string>
+    <string name="update_restart_now">Restart now</string>
+    <string name="update_restart_later">Later</string>
 </resources>

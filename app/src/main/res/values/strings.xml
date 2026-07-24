@@ -310,4 +310,17 @@
     <string name="preview_placeholder">Buraya yazın…</string>
     <string name="layout_change_warning">Bir klavyede aktif olarak kullanılan düzeni kaldırırsanız Android varsayılan düzene dönebilir. Değişiklikten sonra fiziksel klavye ayarlarını kontrol edin.</string>
     <string name="action_refresh">Yenile</string>
+    <string name="settings_item_check_updates">Güncellemeleri Kontrol Et</string>
+    <string name="settings_value_check_updates">Google Play üzerinden yeni sürüm ara</string>
+    <string name="review_flow_completed">Değerlendirme isteği tamamlandı. Teşekkür ederiz.</string>
+    <string name="review_flow_unavailable">Değerlendirme şu anda kullanılamıyor.</string>
+    <string name="update_cancelled">Güncelleme iptal edildi.</string>
+    <string name="update_not_available">KeymapKit güncel.</string>
+    <string name="update_check_failed">Güncelleme kontrol edilemedi. İnternet bağlantınızı kontrol edin.</string>
+    <string name="update_not_supported">Bu cihazda uygulama içi güncelleme desteklenmiyor.</string>
+    <string name="update_error">Güncelleme sırasında bir hata oluştu.</string>
+    <string name="update_ready_title">Güncelleme hazır</string>
+    <string name="update_ready_message">Yeni sürüm indirildi. Güncellemeyi tamamlamak için uygulamayı yeniden başlatın.</string>
+    <string name="update_restart_now">Şimdi yeniden başlat</string>
+    <string name="update_restart_later">Daha sonra</string>
 </resources>

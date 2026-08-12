@@ -13,14 +13,21 @@ class PlayReviewManager(
     private val activity: Activity
 ) {
     private val reviewManager = ReviewManagerFactory.create(activity)
+    private var requestInFlight = false
 
     fun requestReview(onComplete: (ReviewResult) -> Unit) {
+        if (requestInFlight) return
+        requestInFlight = true
         reviewManager.requestReviewFlow()
             .addOnSuccessListener { reviewInfo ->
                 reviewManager.launchReviewFlow(activity, reviewInfo)
-                    .addOnCompleteListener { onComplete(ReviewResult.Completed) }
+                    .addOnCompleteListener {
+                        requestInFlight = false
+                        onComplete(ReviewResult.Completed)
+                    }
             }
             .addOnFailureListener { error ->
+                requestInFlight = false
                 onComplete(ReviewResult.Failed(error))
             }
     }

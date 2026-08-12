@@ -200,6 +200,7 @@
     <!-- Common -->
     <string name="cd_back">Back</string>
     <string name="action_close">Close</string>
+    <string name="action_cancel">Cancel</string>
 
     <!-- Settings - header -->
     <string name="settings_title">Settings</string>
@@ -213,12 +214,15 @@
 
     <!-- Settings - sections -->
     <string name="settings_section_about">About</string>
+    <string name="settings_section_appearance">Appearance &amp; language</string>
     <string name="settings_section_developer">Developer</string>
     <string name="settings_section_support">Support</string>
     <string name="settings_section_legal">Legal</string>
 
     <!-- Settings - items -->
     <string name="settings_item_version">Version</string>
+    <string name="settings_item_theme">Theme</string>
+    <string name="settings_item_language">App language</string>
     <string name="settings_item_repository">Repository</string>
     <string name="settings_item_email">Email</string>
     <string name="settings_item_website">Website</string>
@@ -230,12 +234,21 @@
     <string name="settings_item_privacy_policy">Privacy Policy</string>
     <string name="settings_item_open_source_notices">Open source notices</string>
 
+    <string name="settings_dialog_theme_title">Choose theme</string>
+    <string name="settings_theme_system">System default</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_dialog_language_title">Choose app language</string>
+    <string name="settings_language_system">System default</string>
+    <string name="settings_language_turkish">Türkçe</string>
+    <string name="settings_language_english">English</string>
+
     <!-- Settings - values -->
     <string name="settings_value_version">%1$s (%2$d)</string>
     <string name="settings_value_other_apps">Other apps &amp; publisher page</string>
     <string name="settings_value_github_issues">GitHub Issues</string>
     <string name="settings_value_send_play_store_link">Send Play Store link</string>
-    <string name="settings_value_leave_review">Leave a review</string>
+    <string name="settings_value_leave_review">Open the Google Play listing</string>
     <string name="settings_value_privacy_short">Offline. No data collection.</string>
     <string name="settings_value_third_party_licenses">Third-party licenses</string>
 
@@ -313,8 +326,6 @@
     <string name="action_refresh">Refresh</string>
     <string name="settings_item_check_updates">Check for Updates</string>
     <string name="settings_value_check_updates">Look for a new version on Google Play</string>
-    <string name="review_flow_completed">Review request completed. Thank you.</string>
-    <string name="review_flow_unavailable">Reviews are currently unavailable.</string>
     <string name="update_cancelled">Update cancelled.</string>
     <string name="update_not_available">KeymapKit is up to date.</string>
     <string name="update_check_failed">Could not check for updates. Check your internet connection.</string>
@@ -324,4 +335,21 @@
     <string name="update_ready_message">The new version has been downloaded. Restart the app to finish updating.</string>
     <string name="update_restart_now">Restart now</string>
     <string name="update_restart_later">Later</string>
+    <string name="settings_item_ad_privacy">Ad privacy choices</string>
+    <string name="settings_value_ad_privacy">Manage advertising consent and privacy options</string>
+    <string name="home_setup_supporting">Get started in three simple steps</string>
+    <string name="home_setup_step_connect">Connect your USB or Bluetooth keyboard</string>
+    <string name="home_setup_step_select">Choose a KeymapKit layout in Android settings</string>
+    <string name="home_setup_step_test">Test the layout in the field below</string>
+    <string name="home_no_keyboard">No physical keyboard is currently detected.</string>
+    <string name="onboarding_selection_hint">Recommended layouts to get you started</string>
+    <string name="layout_search_empty">No matching layouts</string>
+    <string name="layout_search_empty_supporting">Try another search or change the category filter.</string>
+    <string name="layout_category_latin">Latin</string>
+    <string name="layout_category_cyrillic">Cyrillic</string>
+    <string name="layout_category_arabic">Arabic</string>
+    <string name="layout_category_indic">Indic</string>
+    <string name="layout_category_asian">Asian</string>
+    <string name="layout_category_semitic">Semitic</string>
+    <string name="layout_category_african">African</string>
 </resources>

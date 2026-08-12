@@ -316,3 +316,13 @@ Apache License 2.0
 KeymapKit uses the official Google Play In-App Review and In-App Updates APIs. Automatic review requests are intentionally conservative and are evaluated only after repeated successful use: multiple layout changes, opening physical keyboard settings, multiple sessions, and at least two days since first use. Google Play always decides whether the review card is shown.
 
 All eligibility counters remain on the device in `SharedPreferences`; no analytics SDK or network telemetry is used.
+
+## Advertising in official builds
+
+The official Google Play release is supported by Google AdMob. Debug builds use Google's
+sample ad identifiers, while release builds use the maintainer's production identifiers.
+Forks should replace or disable the release identifiers before publishing their own builds.
+
+A compact banner is shown at the bottom only after it has loaded successfully. Interstitial
+ads are eligible after five completed keyboard-layout changes and are shown only when leaving
+the layout-management screen, which keeps the editing flow uninterrupted.

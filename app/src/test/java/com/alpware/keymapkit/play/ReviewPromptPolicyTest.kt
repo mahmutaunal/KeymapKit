@@ -13,6 +13,9 @@ class ReviewPromptPolicyTest {
     @Test fun requiresEnoughActions() = assertFalse(ReviewPromptPolicy.isEligible(eligible().copy(meaningfulActionCount = 3), now))
     @Test fun requiresLayoutChanges() = assertFalse(ReviewPromptPolicy.isEligible(eligible().copy(layoutChangeCount = 1), now))
     @Test fun requiresKeyboardSettingsVisit() = assertFalse(ReviewPromptPolicy.isEligible(eligible().copy(keyboardSettingsOpenCount = 0), now))
+    @Test fun requiresMultipleSessions() = assertFalse(ReviewPromptPolicy.isEligible(eligible().copy(sessionCount = 1), now))
+    @Test fun waitsUntilUserHasEnoughExperience() = assertFalse(ReviewPromptPolicy.isEligible(eligible().copy(firstUseEpochMillis = now - day), now))
     @Test fun respectsCooldown() = assertFalse(ReviewPromptPolicy.isEligible(eligible().copy(lastPromptAttemptEpochMillis = now - 30 * day), now))
+    @Test fun allowsAnotherAttemptAfterCooldown() = assertTrue(ReviewPromptPolicy.isEligible(eligible().copy(promptAttemptCount = 1, lastPromptAttemptEpochMillis = now - 120 * day), now))
     @Test fun capsAttempts() = assertFalse(ReviewPromptPolicy.isEligible(eligible().copy(promptAttemptCount = 2), now))
 }

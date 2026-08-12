@@ -14,14 +14,24 @@ extensions.configure<com.android.build.api.dsl.ApplicationExtension>("android") 
         applicationId = "com.alpware.keymapkit"
         minSdk = 28
         targetSdk = 37
-        versionCode = 10
-        versionName = "1.1.1"
+        versionCode = 12
+        versionName = "1.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders["admobAppId"] = ""
+        buildConfigField("String", "ADMOB_BANNER_ID", "")
+        buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "")
     }
 
     buildTypes {
+        debug {
+            // Google sample IDs protect the open-source/debug workflow from invalid traffic.
+        }
         release {
+            manifestPlaceholders["admobAppId"] = ""
+            buildConfigField("String", "ADMOB_BANNER_ID", "")
+            buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "")
             isMinifyEnabled = true
             isShrinkResources = true
             isDebuggable = false
@@ -51,6 +61,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
@@ -62,6 +73,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.play.review)
     implementation(libs.play.update)
+    implementation(libs.play.services.ads)
+    implementation(libs.ump)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

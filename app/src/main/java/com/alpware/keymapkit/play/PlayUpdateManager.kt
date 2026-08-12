@@ -25,6 +25,7 @@ class PlayUpdateManager(
         when (state.installStatus()) {
             InstallStatus.DOWNLOADED -> listener.onUpdateDownloaded()
             InstallStatus.FAILED -> listener.onUpdateError()
+            else -> Unit
         }
     }
 
@@ -41,12 +42,14 @@ class PlayUpdateManager(
                     launch(info, AppUpdateType.IMMEDIATE)
                 }
                 info.installStatus() == InstallStatus.DOWNLOADED -> listener.onUpdateDownloaded()
+                info.installStatus() == InstallStatus.PENDING ||
+                    info.installStatus() == InstallStatus.DOWNLOADING -> registerInstallListener()
             }
         }
     }
 
     fun completeUpdate() {
-        manager.completeUpdate()
+        manager.completeUpdate().addOnFailureListener { listener.onUpdateError() }
     }
 
     fun close() {

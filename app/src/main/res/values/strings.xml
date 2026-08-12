@@ -199,6 +199,7 @@
     <!-- Common -->
     <string name="cd_back">Geri</string>
     <string name="action_close">Kapat</string>
+    <string name="action_cancel">İptal</string>
 
     <!-- Settings - header -->
     <string name="settings_title">Ayarlar</string>
@@ -212,12 +213,15 @@
 
     <!-- Settings - sections -->
     <string name="settings_section_about">Hakkında</string>
+    <string name="settings_section_appearance">Görünüm ve dil</string>
     <string name="settings_section_developer">Geliştirici</string>
     <string name="settings_section_support">Destek</string>
     <string name="settings_section_legal">Yasal</string>
 
     <!-- Settings - items -->
     <string name="settings_item_version">Sürüm</string>
+    <string name="settings_item_theme">Tema</string>
+    <string name="settings_item_language">Uygulama dili</string>
     <string name="settings_item_repository">Depo (GitHub)</string>
     <string name="settings_item_email">E-posta</string>
     <string name="settings_item_website">Web Sitesi</string>
@@ -229,12 +233,21 @@
     <string name="settings_item_privacy_policy">Gizlilik Politikası</string>
     <string name="settings_item_open_source_notices">Açık Kaynak Bildirimleri</string>
 
+    <string name="settings_dialog_theme_title">Tema seçin</string>
+    <string name="settings_theme_system">Sistem varsayılanı</string>
+    <string name="settings_theme_light">Açık</string>
+    <string name="settings_theme_dark">Koyu</string>
+    <string name="settings_dialog_language_title">Uygulama dilini seçin</string>
+    <string name="settings_language_system">Sistem varsayılanı</string>
+    <string name="settings_language_turkish">Türkçe</string>
+    <string name="settings_language_english">English</string>
+
     <!-- Settings - values -->
     <string name="settings_value_version">%1$s (%2$d)</string>
     <string name="settings_value_other_apps">Diğer uygulamalar ve yayıncı sayfası</string>
     <string name="settings_value_github_issues">GitHub Issues</string>
     <string name="settings_value_send_play_store_link">Play Store bağlantısını gönder</string>
-    <string name="settings_value_leave_review">Yorum Bırak</string>
+    <string name="settings_value_leave_review">Google Play mağaza sayfasını aç</string>
     <string name="settings_value_privacy_short">Çevrimdışı. Veri toplanmaz.</string>
     <string name="settings_value_third_party_licenses">Üçüncü taraf lisansları</string>
 
@@ -312,8 +325,6 @@
     <string name="action_refresh">Yenile</string>
     <string name="settings_item_check_updates">Güncellemeleri Kontrol Et</string>
     <string name="settings_value_check_updates">Google Play üzerinden yeni sürüm ara</string>
-    <string name="review_flow_completed">Değerlendirme isteği tamamlandı. Teşekkür ederiz.</string>
-    <string name="review_flow_unavailable">Değerlendirme şu anda kullanılamıyor.</string>
     <string name="update_cancelled">Güncelleme iptal edildi.</string>
     <string name="update_not_available">KeymapKit güncel.</string>
     <string name="update_check_failed">Güncelleme kontrol edilemedi. İnternet bağlantınızı kontrol edin.</string>
@@ -323,4 +334,21 @@
     <string name="update_ready_message">Yeni sürüm indirildi. Güncellemeyi tamamlamak için uygulamayı yeniden başlatın.</string>
     <string name="update_restart_now">Şimdi yeniden başlat</string>
     <string name="update_restart_later">Daha sonra</string>
+    <string name="settings_item_ad_privacy">Reklam gizliliği seçenekleri</string>
+    <string name="settings_value_ad_privacy">Reklam iznini ve gizlilik tercihlerini yönetin</string>
+    <string name="home_setup_supporting">Üç kısa adımda kullanmaya başlayın</string>
+    <string name="home_setup_step_connect">USB veya Bluetooth klavyenizi bağlayın</string>
+    <string name="home_setup_step_select">Android ayarlarından KeymapKit düzenini seçin</string>
+    <string name="home_setup_step_test">Düzeni aşağıdaki alanda test edin</string>
+    <string name="home_no_keyboard">Bağlı bir fiziksel klavye algılanmadı.</string>
+    <string name="onboarding_selection_hint">Başlangıç için önerilen düzenler</string>
+    <string name="layout_search_empty">Eşleşen düzen bulunamadı</string>
+    <string name="layout_search_empty_supporting">Arama metnini veya kategori filtresini değiştirin.</string>
+    <string name="layout_category_latin">Latin</string>
+    <string name="layout_category_cyrillic">Kiril</string>
+    <string name="layout_category_arabic">Arap</string>
+    <string name="layout_category_indic">Hint</string>
+    <string name="layout_category_asian">Asya</string>
+    <string name="layout_category_semitic">Semitik</string>
+    <string name="layout_category_african">Afrika</string>
 </resources>

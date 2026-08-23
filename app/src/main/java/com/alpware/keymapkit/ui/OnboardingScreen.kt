@@ -8,9 +8,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
@@ -58,6 +58,7 @@ fun OnboardingScreen(repository: LayoutSelectionRepository, onDone: () -> Unit) 
         val contentWidth = if (useTwoColumns) KeymapWideContentMaxWidth else KeymapContentMaxWidth
         Scaffold(
             containerColor = MaterialTheme.colorScheme.surface,
+            contentWindowInsets = WindowInsets(0, 0, 0, 0),
             bottomBar = {
                 Surface(
                     color = MaterialTheme.colorScheme.surfaceContainer,
@@ -66,7 +67,6 @@ fun OnboardingScreen(repository: LayoutSelectionRepository, onDone: () -> Unit) 
                     Box(
                         Modifier
                             .fillMaxWidth()
-                            .navigationBarsPadding()
                             .padding(
                                 horizontal = if (useTwoColumns) 24.dp else 16.dp,
                                 vertical = 12.dp

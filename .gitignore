@@ -78,7 +78,7 @@ lint-results*.xml
 *.hprof
 
 # ======================================================
-# Firebase / Google Services (not used, but safe)
+# Firebase / Google Services (local console configuration)
 # ======================================================
 google-services.json
 

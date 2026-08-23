@@ -269,16 +269,20 @@
     <string name="settings_dialog_privacy_title">Privacy Policy</string>
     <string name="settings_dialog_privacy_body">
         Key points
-        • This app works offline.
-        • No personal data is collected.
-        • No analytics, ads, or trackers are used.
-        • No permissions are requested for data collection.
+        • The app uses Google AdMob banner and interstitial ads.
+        • Google UMP manages advertising and privacy choices where required.
+        • Firebase Analytics can report ad-format and interaction events together with aggregate dimensions such as country, app version, and acquisition source.
+        • Firebase Remote Config is used to disable ads remotely or reduce their frequency.
+        • Typing-test text and keyboard input are never stored or transmitted.
 
         Details
-        This application does not collect, store, or share any personal information. All functionality runs locally on your device.
+        Selected keyboard layouts are stored only on your device. Google advertising and measurement services may process data such as device or app identifiers, approximate country derived from IP address, ad interactions, and app version for ad delivery, fraud prevention, aggregate measurement, and acquisition reporting under Google’s policies. Privacy choices can be changed from Settings when required.
 
         If you have questions, contact the developer via the email in Settings.
     </string>
+
+    <string name="banner_ad_label">ADVERTISEMENT</string>
+    <string name="banner_ad_placeholder">Advertising space</string>
 
     <!-- Settings - dialog: Notices -->
     <string name="settings_dialog_notices_title">Open source notices</string>

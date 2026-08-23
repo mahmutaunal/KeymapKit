@@ -195,17 +195,10 @@ Settings
 
 KeymapKit follows a strict privacy-first philosophy.
 
-It contains:
-
-- No permissions
-- No analytics
-- No advertising
-- No tracking
-- No accounts
-- No internet communication
-- No cloud services
-
-Everything works locally on your device.
+Keyboard layouts, selected-layout preferences and typing-test content stay on the device. The app
+does not create accounts or transmit keyboard input. The official Google Play build uses Google
+AdMob, UMP, Firebase Analytics and Remote Config for advertising, consent, aggregate traffic-quality
+measurement and safety controls. See [PRIVACY.md](PRIVACY.md) for the complete disclosure.
 
 ---
 
@@ -315,7 +308,9 @@ Apache License 2.0
 
 KeymapKit uses the official Google Play In-App Review and In-App Updates APIs. Automatic review requests are intentionally conservative and are evaluated only after repeated successful use: multiple layout changes, opening physical keyboard settings, multiple sessions, and at least two days since first use. Google Play always decides whether the review card is shown.
 
-All eligibility counters remain on the device in `SharedPreferences`; no analytics SDK or network telemetry is used.
+Review eligibility counters remain on the device in `SharedPreferences`. Advertising operations use
+the aggregate Firebase telemetry described below; review eligibility data and typing-test content are
+not sent to Analytics.
 
 ## Advertising in official builds
 
@@ -323,6 +318,15 @@ The official Google Play release is supported by Google AdMob. Debug builds use 
 sample ad identifiers, while release builds use the maintainer's production identifiers.
 Forks should replace or disable the release identifiers before publishing their own builds.
 
-A compact banner is shown at the bottom only after it has loaded successfully. Interstitial
-ads are eligible after five completed keyboard-layout changes and are shown only when leaving
-the layout-management screen, which keeps the editing flow uninterrupted.
+A fixed 320x50 banner slot is reserved at the bottom and centered horizontally, so content never
+jumps when an ad loads.
+Banner and interstitial loads use lifecycle-aware bounded exponential backoff and a device-local
+circuit breaker. Interstitials default to seven completed keyboard-layout changes, a two-minute
+minimum session age, a fifteen-minute cooldown, at most one display per session, and at most two
+per day. Remote Config can disable formats or make these rules stricter, but cannot cross the
+immutable safety limits compiled into the app.
+
+Firebase Analytics records aggregate ad operations for traffic-quality monitoring. Country, app
+version and acquisition source are supplied by Firebase's standard reporting dimensions; custom
+events add ad format, placement, operation, load errors and local safety alerts. See
+[`docs/ADMOB_OPERATIONS.md`](docs/ADMOB_OPERATIONS.md) for the required console setup.

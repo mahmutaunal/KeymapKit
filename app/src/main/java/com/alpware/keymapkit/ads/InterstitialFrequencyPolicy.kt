@@ -2,11 +2,12 @@ package com.alpware.keymapkit.ads
 
 /** Pure frequency rules for layout-change interstitials. */
 object InterstitialFrequencyPolicy {
-    const val ACTIONS_PER_INTERSTITIAL = 3
+    fun nextActionCount(currentCount: Int, actionsRequired: Int): Int =
+        (currentCount + 1).coerceAtMost(actionsRequired)
 
-    fun nextActionCount(currentCount: Int): Int =
-        (currentCount + 1).coerceAtMost(ACTIONS_PER_INTERSTITIAL)
+    fun isEligible(actionCount: Int, actionsRequired: Int): Boolean =
+        actionCount >= actionsRequired
 
-    fun isEligible(actionCount: Int): Boolean =
-        actionCount >= ACTIONS_PER_INTERSTITIAL
+    fun isCooldownComplete(nowMs: Long, lastShownMs: Long, cooldownMs: Long): Boolean =
+        lastShownMs <= 0L || nowMs < lastShownMs || nowMs - lastShownMs >= cooldownMs
 }

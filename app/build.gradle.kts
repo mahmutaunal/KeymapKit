@@ -4,6 +4,12 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+// Firebase remains optional for local/open-source builds. Dropping the Firebase console's
+// google-services.json into app/ activates Analytics and Remote Config for release builds.
+if (file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
+}
+
 extensions.configure<com.android.build.api.dsl.ApplicationExtension>("android") {
     namespace = "com.alpware.keymapkit"
     compileSdk {
@@ -14,8 +20,8 @@ extensions.configure<com.android.build.api.dsl.ApplicationExtension>("android") 
         applicationId = "com.alpware.keymapkit"
         minSdk = 28
         targetSdk = 37
-        versionCode = 12
-        versionName = "1.2.0"
+        versionCode = 13
+        versionName = "1.2.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -75,6 +81,10 @@ dependencies {
     implementation(libs.play.update)
     implementation(libs.play.services.ads)
     implementation(libs.ump)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.config)
+    implementation(libs.androidx.concurrent.futures)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

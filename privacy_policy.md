@@ -1,135 +1,61 @@
-# 🇬🇧 Privacy Policy (English)
+# KeymapKit Privacy Policy / Gizlilik Politikası
 
-Privacy Policy for KeymapKit
+**Last updated / Son güncelleme: 2026-08-22**
 
-**Last updated: 2026-01-11**
+## English
 
-KeymapKit respects your privacy. This application is designed to work entirely offline and does not collect, store, or share any personal data.
+KeymapKit provides physical-keyboard layouts locally on the Android device. It does not create
+user accounts, read or transmit keyboard input, or upload text entered in the typing-test field.
+Selected layout identifiers are stored only in private on-device preferences.
 
----
+The official Google Play build uses these Google services:
 
-## Information Collection and Use
+- **Google AdMob** serves banner and interstitial advertisements and helps detect invalid traffic.
+- **Google User Messaging Platform (UMP)** obtains and manages advertising/privacy choices where
+  required. A privacy-options entry is available in Settings when required by UMP.
+- **Firebase Analytics** records aggregate advertising operations such as ad format, load result,
+  impression, click, and estimated revenue. Firebase reports can include country, app version,
+  platform, and acquisition source.
+- **Firebase Remote Config** can disable an ad format or make the built-in ad-frequency policy
+  stricter. The app limits normal fetches to a 12-hour cache interval.
 
-KeymapKit:
-- ❌ Does not collect personal information
-- ❌ Does not collect device identifiers 
-- ❌ Does not collect usage analytics 
-- ❌ Does not access contacts, storage, or location 
-- ❌ Does not use the internet
+Google and its partners may process device or app identifiers, IP-derived approximate location,
+advertising interactions, diagnostics, app version, and attribution information for ad delivery,
+measurement, security, and fraud prevention. Their processing is governed by Google's policies and
+the consent choices available to the user.
 
-The app only provides static physical keyboard layout resources to the Android system.
+KeymapKit does not send typing-test content, keyboard input, selected layout identifiers, email
+addresses, contacts, files, or precise location to Firebase Analytics. Device-local advertising
+safety counters are retained only to limit requests and temporarily stop ads after abnormal rates.
 
----
+For questions, contact the developer using the email address shown in the app's Settings screen.
 
-## Permissions
+## Türkçe
 
-KeymapKit does not request any permissions.
+KeymapKit, fiziksel klavye düzenlerini Android cihaz üzerinde yerel olarak sağlar. Kullanıcı hesabı
+oluşturmaz, klavye girdilerini okumaz veya iletmez ve yazım testi alanına girilen metni yüklemez.
+Seçilen düzen kimlikleri yalnızca cihazın özel yerel tercihlerinde saklanır.
 
-It does not use:
-- Accessibility services 
-- Input Method services (IME)
-- Network or internet access 
-- Background data collection
+Resmî Google Play sürümü aşağıdaki Google hizmetlerini kullanır:
 
----
+- **Google AdMob**, banner ve geçiş reklamlarını sunar ve geçersiz trafiğin tespitine yardımcı olur.
+- **Google User Messaging Platform (UMP)**, gerekli bölgelerde reklam ve gizlilik tercihlerini alır
+  ve yönetir. UMP gerekli gördüğünde Ayarlar ekranında gizlilik seçenekleri sunulur.
+- **Firebase Analytics**, reklam biçimi, yükleme sonucu, gösterim, tıklama ve tahmini gelir gibi
+  toplu reklam işlemlerini kaydeder. Firebase raporlarında ülke, uygulama sürümü, platform ve edinme
+  kaynağı boyutları bulunabilir.
+- **Firebase Remote Config**, bir reklam biçimini kapatabilir veya uygulamaya gömülü reklam sıklığı
+  politikasını daha sıkı hale getirebilir. Normal yapılandırma istekleri 12 saatlik önbellek aralığıyla
+  sınırlandırılır.
 
-## Third-Party Services
+Google ve iş ortakları; reklam sunumu, ölçüm, güvenlik, ilişkilendirme ve sahtekârlığın önlenmesi için
+cihaz veya uygulama tanımlayıcıları, IP adresinden türetilen yaklaşık konum, reklam etkileşimleri,
+tanılama bilgileri ve uygulama sürümü gibi verileri işleyebilir. Bu işlemler Google politikalarına ve
+kullanıcının izin tercihlerine tabidir.
 
-KeymapKit does not use any third-party services, SDKs, analytics tools, or advertising libraries.
+KeymapKit; yazım testi içeriğini, klavye girdisini, seçilen düzen kimliklerini, e-posta adreslerini,
+kişileri, dosyaları veya kesin konumu Firebase Analytics'e göndermez. Cihazdaki reklam güvenlik
+sayaçları yalnızca istekleri sınırlamak ve olağan dışı oranlarda reklamları geçici olarak durdurmak
+için tutulur.
 
----
-
-## Data Security
-
-Since no data is collected or transmitted, there is no risk of data leakage.
-
-All functionality is handled locally on your device.
-
----
-
-## Children’s Privacy
-
-KeymapKit does not collect any data from users of any age.
-The app is safe to use for children and is suitable for Everyone.
-
----
-
-## Changes to This Privacy Policy
-
-If changes are made, this page will be updated accordingly.
-
----
-
-## Contact
-
-If you have any questions about this Privacy Policy, you can contact the developer via the GitHub repository.
-
----
-
-# 🇹🇷 Gizlilik Politikası (Türkçe)
-
-KeymapKit Gizlilik Politikası
-
-**Son güncelleme: 11.01.2026**
-
-KeymapKit, kullanıcı gizliliğine önem verir. Bu uygulama tamamen çevrimdışı çalışır ve hiçbir kişisel veriyi toplamaz, saklamaz veya paylaşmaz.
-
----
-
-## Bilgi Toplama ve Kullanım
-
-KeymapKit:
-- ❌ Kişisel veri toplamaz 
-- ❌ Cihaz bilgisi veya kimlik verisi toplamaz 
-- ❌ Kullanım analitiği yapmaz 
-- ❌ Rehber, depolama veya konum erişimi yoktur 
-- ❌ İnternet erişimi kullanmaz
-
-Uygulama yalnızca Android sistemine statik fiziksel klavye düzenleri sağlar.
-
----
-
-## İzinler
-
-KeymapKit hiçbir izin talep etmez.
-
-Aşağıdaki servisleri kullanmaz:
-- Erişilebilirlik (Accessibility)
-- Klavye servisi (IME)
-- İnternet / ağ erişimi 
-- Arka plan veri toplama
-
----
-
-## Üçüncü Taraf Hizmetler
-
-KeymapKit; reklam, analiz veya takip amacıyla hiçbir üçüncü taraf servis veya SDK kullanmaz.
-
----
-
-## Veri Güvenliği
-
-Herhangi bir veri toplanmadığı veya iletilmediği için veri güvenliği riski bulunmamaktadır.
-
-Tüm işlemler cihaz üzerinde gerçekleştirilir.
-
----
-
-## Çocukların Gizliliği
-
-KeymapKit, hiçbir yaş grubundan veri toplamaz.
-Uygulama çocuklar için güvenlidir ve Herkes için uygundur.
-
----
-
-## Gizlilik Politikasındaki Değişiklikler
-
-Herhangi bir değişiklik durumunda bu sayfa güncellenecektir.
-
----
-
-## İletişim
-
-Bu gizlilik politikası hakkında sorularınız varsa GitHub deposu üzerinden geliştiriciye ulaşabilirsiniz.
-
----
+Sorularınız için uygulamanın Ayarlar ekranındaki e-posta adresinden geliştiriciye ulaşabilirsiniz.

@@ -268,16 +268,20 @@
     <string name="settings_dialog_privacy_title">Gizlilik Politikası</string>
     <string name="settings_dialog_privacy_body">
         Öne çıkanlar
-        • Bu uygulama çevrimdışı çalışır.
-        • Kişisel veri toplanmaz.
-        • Analitik, reklam veya takipçi kullanılmaz.
-        • Veri toplamak için izin istenmez.
+        • Uygulama, Google AdMob banner ve geçiş reklamları kullanır.
+        • Google UMP, gerekli bölgelerde reklam ve gizlilik tercihlerinizi yönetir.
+        • Firebase Analytics; reklam biçimi ve etkileşim olaylarıyla birlikte ülke, uygulama sürümü ve edinme kaynağı gibi toplu boyutları raporlayabilir.
+        • Firebase Remote Config reklamları uzaktan kapatmak veya sıklığı azaltmak için kullanılır.
+        • Yazım testi metni ve klavye girdileri kaydedilmez veya iletilmez.
 
         Detaylar
-        Bu uygulama kişisel bilgilerinizi toplamaz, saklamaz veya paylaşmaz. Tüm işlevler cihazınızda yerel olarak çalışır.
+        Seçtiğiniz klavye düzenleri yalnızca cihazınızda saklanır. Google reklam ve ölçüm hizmetleri; reklam sunumu, sahtekârlığın önlenmesi, toplu kullanım ölçümü ve edinme raporlaması için cihaz ya da uygulama tanımlayıcıları, IP adresinden türetilen yaklaşık ülke, reklam etkileşimleri ve uygulama sürümü gibi verileri Google politikalarına uygun şekilde işleyebilir. Gizlilik seçenekleri gerektiğinde Ayarlar ekranından değiştirilebilir.
 
         Sorularınız için Ayarlar bölümündeki e-posta üzerinden geliştiriciye ulaşabilirsiniz.
     </string>
+
+    <string name="banner_ad_label">REKLAM</string>
+    <string name="banner_ad_placeholder">Reklam alanı</string>
 
     <!-- Settings - dialog: Notices -->
     <string name="settings_dialog_notices_title">Açık kaynak bildirimleri</string>

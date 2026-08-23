@@ -29,6 +29,11 @@ import androidx.navigation.compose.rememberNavController
 import com.alpware.keymapkit.ads.AdConsentManager
 import com.alpware.keymapkit.ads.InterstitialAdManager
 import com.alpware.keymapkit.ads.PersistentBanner
+import com.alpware.keymapkit.ads.AdRuntimeConfig
+import com.alpware.keymapkit.ads.AdRemoteConfig
+import com.alpware.keymapkit.ads.AdTelemetry
+import com.alpware.keymapkit.ads.AdTrafficGuard
+import com.alpware.keymapkit.ads.FirebaseBootstrap
 import com.alpware.keymapkit.layout.LayoutSelectionRepository
 import com.alpware.keymapkit.play.PlayReviewManager
 import com.alpware.keymapkit.play.PlayUpdateManager
@@ -60,6 +65,9 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
     private lateinit var interstitialAdManager: InterstitialAdManager
     private var adsReady by mutableStateOf(false)
     private var privacyOptionsRequired by mutableStateOf(false)
+    private var adRuntimeConfig by mutableStateOf(AdRuntimeConfig())
+    private lateinit var adTrafficGuard: AdTrafficGuard
+    private lateinit var adTelemetry: AdTelemetry
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,13 +81,31 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
         playReviewManager = PlayReviewManager(this)
         reviewPromptCoordinator = ReviewPromptCoordinator(this).also { it.recordSession() }
 
-        adConsentManager = AdConsentManager(this)
-        interstitialAdManager = InterstitialAdManager(this) {
-            adsReady && adConsentManager.canRequestAds
+        // Firebase must be initialized before UMP so Consent Mode can interpret the choice.
+        FirebaseBootstrap.initialize(this)
+        adTrafficGuard = AdTrafficGuard(this)
+        adTelemetry = AdTelemetry(this)
+        AdRemoteConfig(this).fetchOnce { updatedConfig ->
+            runOnUiThread {
+                adRuntimeConfig = updatedConfig
+                if (::interstitialAdManager.isInitialized) {
+                    interstitialAdManager.refreshPolicy()
+                }
+            }
         }
-        adConsentManager.gatherConsent {
-            privacyOptionsRequired = adConsentManager.isPrivacyOptionsRequired
-            if (adConsentManager.canRequestAds) initializeAds()
+        adConsentManager = AdConsentManager(this)
+        interstitialAdManager = InterstitialAdManager(
+            activity = this,
+            lifecycleOwner = this,
+            canRequestAds = { adsReady && adConsentManager.canRequestAds },
+            runtimeConfig = { adRuntimeConfig },
+            trafficGuard = adTrafficGuard,
+            telemetry = adTelemetry,
+        )
+        adConsentManager.gatherConsent { result ->
+            adTelemetry.consentResult(result.canRequestAds, result.error?.errorCode)
+            privacyOptionsRequired = result.privacyOptionsRequired
+            if (result.canRequestAds) initializeAds()
         }
 
         val repository = LayoutSelectionRepository(this).also { it.prepareFreshInstall() }
@@ -161,8 +187,13 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
                                             onLanguageChange = ::setApplicationLanguage,
                                             showPrivacyOptions = privacyOptionsRequired,
                                             onPrivacyOptions = {
-                                                adConsentManager.showPrivacyOptions {
-                                                    privacyOptionsRequired = adConsentManager.isPrivacyOptionsRequired
+                                                adConsentManager.showPrivacyOptions { result ->
+                                                    adTelemetry.consentResult(
+                                                        result.canRequestAds,
+                                                        result.error?.errorCode,
+                                                    )
+                                                    privacyOptionsRequired = result.privacyOptionsRequired
+                                                    if (result.canRequestAds) initializeAds()
                                                 }
                                             }
                                         )
@@ -170,7 +201,12 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
                                 }
                             }
                         }
-                        PersistentBanner(canRequestAds = adsReady && adConsentManager.canRequestAds)
+                        PersistentBanner(
+                            canRequestAds = adsReady && adConsentManager.canRequestAds,
+                            runtimeConfig = adRuntimeConfig,
+                            trafficGuard = adTrafficGuard,
+                            telemetry = adTelemetry,
+                        )
                     }
                 }
             }

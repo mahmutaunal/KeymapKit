@@ -39,33 +39,17 @@ class AdRemoteConfig(private val context: Context) {
     private fun readSafe(remote: FirebaseRemoteConfig) = AdRuntimeConfig.safe(
         bannerEnabled = remote.getBoolean(KEY_BANNER_ENABLED),
         interstitialEnabled = remote.getBoolean(KEY_INTERSTITIAL_ENABLED),
-        actionsRequired = remote.getLong(KEY_ACTIONS_REQUIRED),
-        cooldownMs = remote.getLong(KEY_COOLDOWN_SECONDS) * 1000L,
-        minimumSessionAgeMs = remote.getLong(KEY_MINIMUM_SESSION_AGE_SECONDS) * 1000L,
-        maxPerSession = remote.getLong(KEY_MAX_PER_SESSION),
-        maxPerDay = remote.getLong(KEY_MAX_PER_DAY),
     )
 
     companion object {
         const val KEY_BANNER_ENABLED = "ads_banner_enabled"
         const val KEY_INTERSTITIAL_ENABLED = "ads_interstitial_enabled"
-        const val KEY_ACTIONS_REQUIRED = "ads_interstitial_actions_required"
-        const val KEY_COOLDOWN_SECONDS = "ads_interstitial_cooldown_seconds"
-        const val KEY_MINIMUM_SESSION_AGE_SECONDS = "ads_interstitial_min_session_age_seconds"
-        const val KEY_MAX_PER_SESSION = "ads_interstitial_max_per_session"
-        const val KEY_MAX_PER_DAY = "ads_interstitial_max_per_day"
 
         const val MINIMUM_FETCH_INTERVAL_SECONDS = 12 * 60 * 60L
 
         val DEFAULTS: Map<String, Any> = mapOf(
             KEY_BANNER_ENABLED to true,
             KEY_INTERSTITIAL_ENABLED to true,
-            KEY_ACTIONS_REQUIRED to AdRuntimeConfig.DEFAULT_ACTIONS_REQUIRED.toLong(),
-            KEY_COOLDOWN_SECONDS to AdRuntimeConfig.DEFAULT_COOLDOWN_MS / 1000L,
-            KEY_MINIMUM_SESSION_AGE_SECONDS to
-                AdRuntimeConfig.DEFAULT_MINIMUM_SESSION_AGE_MS / 1000L,
-            KEY_MAX_PER_SESSION to AdRuntimeConfig.HARD_MAX_INTERSTITIALS_PER_SESSION.toLong(),
-            KEY_MAX_PER_DAY to AdRuntimeConfig.HARD_MAX_INTERSTITIALS_PER_DAY.toLong(),
         )
     }
 }

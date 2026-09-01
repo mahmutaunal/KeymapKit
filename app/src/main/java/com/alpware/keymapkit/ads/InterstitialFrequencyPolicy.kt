@@ -7,7 +7,4 @@ object InterstitialFrequencyPolicy {
 
     fun isEligible(actionCount: Int, actionsRequired: Int): Boolean =
         actionCount >= actionsRequired
-
-    fun isCooldownComplete(nowMs: Long, lastShownMs: Long, cooldownMs: Long): Boolean =
-        lastShownMs <= 0L || nowMs < lastShownMs || nowMs - lastShownMs >= cooldownMs
 }

@@ -218,6 +218,7 @@
     <string name="settings_section_developer">Developer</string>
     <string name="settings_section_support">Support</string>
     <string name="settings_section_legal">Legal</string>
+    <string name="settings_section_premium">Premium</string>
 
     <!-- Settings - items -->
     <string name="settings_item_version">Version</string>
@@ -233,6 +234,9 @@
 
     <string name="settings_item_privacy_policy">Privacy Policy</string>
     <string name="settings_item_open_source_notices">Open source notices</string>
+    <string name="settings_item_remove_ads">Remove ads for life</string>
+    <string name="settings_item_premium_active">Premium active</string>
+    <string name="settings_item_restore_premium">Restore purchase</string>
 
     <string name="settings_dialog_theme_title">Choose theme</string>
     <string name="settings_theme_system">System default</string>
@@ -249,8 +253,16 @@
     <string name="settings_value_github_issues">GitHub Issues</string>
     <string name="settings_value_send_play_store_link">Send Play Store link</string>
     <string name="settings_value_leave_review">Open the Google Play listing</string>
-    <string name="settings_value_privacy_short">Offline. No data collection.</string>
+    <string name="settings_value_privacy_short">Details about device-first use and Google services</string>
     <string name="settings_value_third_party_licenses">Third-party licenses</string>
+    <string name="settings_value_premium_price">One-time %1$s — no subscription</string>
+    <string name="settings_value_premium_active">Ads are permanently removed for this Google Play account.</string>
+    <string name="settings_value_premium_test">Debug Premium test mode is active; no real purchase was made.</string>
+    <string name="settings_value_premium_connecting">Loading the Google Play price…</string>
+    <string name="settings_value_premium_processing">Checking purchase status…</string>
+    <string name="settings_value_premium_pending">Payment is pending. Premium activates after payment completes.</string>
+    <string name="settings_value_premium_unavailable">Google Play billing is currently unavailable.</string>
+    <string name="settings_value_restore_premium">Check this Google Play account for a previous Premium purchase</string>
 
     <!-- Settings - share -->
     <string name="settings_share_title">Share %1$s</string>
@@ -273,10 +285,11 @@
         • Google UMP manages advertising and privacy choices where required.
         • Firebase Analytics can report ad-format and interaction events together with aggregate dimensions such as country, app version, and acquisition source.
         • Firebase Remote Config is used to disable ads remotely or reduce their frequency.
+        • Google Play Billing processes the optional one-time Premium purchase.
         • Typing-test text and keyboard input are never stored or transmitted.
 
         Details
-        Selected keyboard layouts are stored only on your device. Google advertising and measurement services may process data such as device or app identifiers, approximate country derived from IP address, ad interactions, and app version for ad delivery, fraud prevention, aggregate measurement, and acquisition reporting under Google’s policies. Privacy choices can be changed from Settings when required.
+        Selected keyboard layouts are stored only on your device. Google advertising and measurement services may process data such as device or app identifiers, approximate country derived from IP address, ad interactions, and app version for ad delivery, fraud prevention, aggregate measurement, and acquisition reporting under Google’s policies. Google Play processes Premium payments; the app does not collect card details and stores only the Premium entitlement on the device. Privacy choices can be changed from Settings when required.
 
         If you have questions, contact the developer via the email in Settings.
     </string>

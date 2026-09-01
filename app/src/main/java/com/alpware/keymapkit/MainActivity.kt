@@ -34,6 +34,8 @@ import com.alpware.keymapkit.ads.AdRemoteConfig
 import com.alpware.keymapkit.ads.AdTelemetry
 import com.alpware.keymapkit.ads.AdTrafficGuard
 import com.alpware.keymapkit.ads.FirebaseBootstrap
+import com.alpware.keymapkit.billing.PremiumBillingManager
+import com.alpware.keymapkit.billing.PremiumState
 import com.alpware.keymapkit.layout.LayoutSelectionRepository
 import com.alpware.keymapkit.play.PlayReviewManager
 import com.alpware.keymapkit.play.PlayUpdateManager
@@ -68,6 +70,9 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
     private var adRuntimeConfig by mutableStateOf(AdRuntimeConfig())
     private lateinit var adTrafficGuard: AdTrafficGuard
     private lateinit var adTelemetry: AdTelemetry
+    private lateinit var premiumBillingManager: PremiumBillingManager
+    private var premiumState by mutableStateOf(PremiumState(isPremium = false))
+    private var adFeaturesInitialized = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,32 +86,25 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
         playReviewManager = PlayReviewManager(this)
         reviewPromptCoordinator = ReviewPromptCoordinator(this).also { it.recordSession() }
 
+        premiumBillingManager = PremiumBillingManager(
+            context = this,
+            testMode = BuildConfig.DEBUG && BuildConfig.PREMIUM_TEST_MODE,
+            onStateChanged = { updatedState ->
+                runOnUiThread {
+                    val wasPremium = premiumState.isPremium
+                    premiumState = updatedState
+                    if (wasPremium && !updatedState.isPremium) initializeAdFeaturesIfNeeded()
+                }
+            },
+        )
+        premiumState = premiumBillingManager.state
+
         // Firebase must be initialized before UMP so Consent Mode can interpret the choice.
         FirebaseBootstrap.initialize(this)
         adTrafficGuard = AdTrafficGuard(this)
         adTelemetry = AdTelemetry(this)
-        AdRemoteConfig(this).fetchOnce { updatedConfig ->
-            runOnUiThread {
-                adRuntimeConfig = updatedConfig
-                if (::interstitialAdManager.isInitialized) {
-                    interstitialAdManager.refreshPolicy()
-                }
-            }
-        }
-        adConsentManager = AdConsentManager(this)
-        interstitialAdManager = InterstitialAdManager(
-            activity = this,
-            lifecycleOwner = this,
-            canRequestAds = { adsReady && adConsentManager.canRequestAds },
-            runtimeConfig = { adRuntimeConfig },
-            trafficGuard = adTrafficGuard,
-            telemetry = adTelemetry,
-        )
-        adConsentManager.gatherConsent { result ->
-            adTelemetry.consentResult(result.canRequestAds, result.error?.errorCode)
-            privacyOptionsRequired = result.privacyOptionsRequired
-            if (result.canRequestAds) initializeAds()
-        }
+        if (!premiumState.isPremium) initializeAdFeaturesIfNeeded()
+        premiumBillingManager.start()
 
         val repository = LayoutSelectionRepository(this).also { it.prepareFreshInstall() }
         val appearancePreferences = AppearancePreferences(this)
@@ -159,7 +157,9 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
                                                 if (layoutsChanged) {
                                                     val reviewStarted =
                                                         requestAutomaticReviewIfEligible()
-                                                    if (!reviewStarted) {
+                                                    if (!reviewStarted &&
+                                                        ::interstitialAdManager.isInitialized
+                                                    ) {
                                                         interstitialAdManager.showIfEligible()
                                                     }
                                                 }
@@ -167,7 +167,9 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
                                             onLayoutChanged = {
                                                 layoutsChanged = true
                                                 reviewPromptCoordinator.recordLayoutChanged()
-                                                interstitialAdManager.recordLayoutChange()
+                                                if (::interstitialAdManager.isInitialized) {
+                                                    interstitialAdManager.recordLayoutChange()
+                                                }
                                             }
                                         )
                                     }
@@ -185,8 +187,24 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
                                                 .get(0)
                                                 ?.toLanguageTag(),
                                             onLanguageChange = ::setApplicationLanguage,
-                                            showPrivacyOptions = privacyOptionsRequired,
-                                            onPrivacyOptions = {
+                                            isPremium = premiumState.isPremium,
+                                            premiumPrice = premiumState.formattedPrice,
+                                            premiumStoreStatus = premiumState.storeStatus,
+                                            premiumOperationInProgress =
+                                                premiumState.operationInProgress,
+                                            premiumTestMode = premiumState.isTestMode,
+                                            onBuyPremium = {
+                                                premiumBillingManager.launchPurchase(this@MainActivity)
+                                            },
+                                            onRestorePremium = {
+                                                premiumBillingManager.restorePurchases()
+                                            },
+                                            showPrivacyOptions = !premiumState.isPremium &&
+                                                privacyOptionsRequired,
+                                            onPrivacyOptions = privacyOptions@{
+                                                if (premiumState.isPremium ||
+                                                    !::adConsentManager.isInitialized
+                                                ) return@privacyOptions
                                                 adConsentManager.showPrivacyOptions { result ->
                                                     adTelemetry.consentResult(
                                                         result.canRequestAds,
@@ -201,12 +219,15 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
                                 }
                             }
                         }
-                        PersistentBanner(
-                            canRequestAds = adsReady && adConsentManager.canRequestAds,
-                            runtimeConfig = adRuntimeConfig,
-                            trafficGuard = adTrafficGuard,
-                            telemetry = adTelemetry,
-                        )
+                        if (!premiumState.isPremium && ::adConsentManager.isInitialized) {
+                            PersistentBanner(
+                                canRequestAds = adsReady && adConsentManager.canRequestAds &&
+                                    !premiumState.isPremium,
+                                runtimeConfig = adRuntimeConfig,
+                                trafficGuard = adTrafficGuard,
+                                telemetry = adTelemetry,
+                            )
+                        }
                     }
                 }
             }
@@ -218,6 +239,7 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
     override fun onResume() {
         super.onResume()
         if (::playUpdateManager.isInitialized) playUpdateManager.resumeInterruptedUpdate()
+        if (::premiumBillingManager.isInitialized) premiumBillingManager.refreshPurchases()
         if (reviewCheckOnNextResume) {
             reviewCheckOnNextResume = false
             requestAutomaticReviewIfEligible()
@@ -228,17 +250,46 @@ class MainActivity : AppCompatActivity(), PlayUpdateManager.Listener {
         updateDownloadedDialog?.dismiss()
         if (::playUpdateManager.isInitialized) playUpdateManager.close()
         if (::interstitialAdManager.isInitialized) interstitialAdManager.clear()
+        if (::premiumBillingManager.isInitialized) premiumBillingManager.close()
         super.onDestroy()
     }
 
+    private fun initializeAdFeaturesIfNeeded() {
+        if (adFeaturesInitialized || premiumState.isPremium) return
+        adFeaturesInitialized = true
+        AdRemoteConfig(this).fetchOnce { updatedConfig ->
+            runOnUiThread {
+                adRuntimeConfig = updatedConfig
+                if (::interstitialAdManager.isInitialized) {
+                    interstitialAdManager.refreshPolicy()
+                }
+            }
+        }
+        adConsentManager = AdConsentManager(this)
+        interstitialAdManager = InterstitialAdManager(
+            activity = this,
+            lifecycleOwner = this,
+            canRequestAds = {
+                adsReady && adConsentManager.canRequestAds && !premiumState.isPremium
+            },
+            runtimeConfig = { adRuntimeConfig },
+            trafficGuard = adTrafficGuard,
+            telemetry = adTelemetry,
+        )
+        adConsentManager.gatherConsent { result ->
+            adTelemetry.consentResult(result.canRequestAds, result.error?.errorCode)
+            privacyOptionsRequired = result.privacyOptionsRequired
+            if (result.canRequestAds) initializeAds()
+        }
+    }
 
     private fun initializeAds() {
-        if (adsReady) return
+        if (premiumState.isPremium || adsReady || !::interstitialAdManager.isInitialized) return
         CoroutineScope(Dispatchers.IO).launch {
             MobileAds.initialize(this@MainActivity) {
                 runOnUiThread {
                     adsReady = true
-                    interstitialAdManager.preload()
+                    if (!premiumState.isPremium) interstitialAdManager.preload()
                 }
             }
         }

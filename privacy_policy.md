@@ -1,6 +1,6 @@
 # KeymapKit Privacy Policy / Gizlilik Politikası
 
-**Last updated / Son güncelleme: 2026-08-22**
+**Last updated / Son güncelleme: 2026-08-28**
 
 ## English
 
@@ -18,6 +18,10 @@ The official Google Play build uses these Google services:
   platform, and acquisition source.
 - **Firebase Remote Config** can disable an ad format or make the built-in ad-frequency policy
   stricter. The app limits normal fetches to a 12-hour cache interval.
+- **Google Play Billing** processes the optional one-time Premium purchase. The app reads the
+  localized product price and purchase status from Play, acknowledges completed purchases, and
+  stores a boolean Premium entitlement locally for offline access. Payment details remain with
+  Google Play; KeymapKit has no purchase backend and does not collect card details.
 
 Google and its partners may process device or app identifiers, IP-derived approximate location,
 advertising interactions, diagnostics, app version, and attribution information for ad delivery,
@@ -47,6 +51,10 @@ Resmî Google Play sürümü aşağıdaki Google hizmetlerini kullanır:
 - **Firebase Remote Config**, bir reklam biçimini kapatabilir veya uygulamaya gömülü reklam sıklığı
   politikasını daha sıkı hale getirebilir. Normal yapılandırma istekleri 12 saatlik önbellek aralığıyla
   sınırlandırılır.
+- **Google Play Billing**, isteğe bağlı tek seferlik Premium satın alımını işler. Uygulama,
+  yerelleştirilmiş ürün fiyatını ve satın alma durumunu Play üzerinden okur, tamamlanan satın alımları
+  onaylar ve çevrimdışı erişim için cihazda yalnızca boolean Premium hakkı saklar. Ödeme bilgileri
+  Google Play'de kalır; KeymapKit'in satın alma sunucusu yoktur ve kart bilgisi toplamaz.
 
 Google ve iş ortakları; reklam sunumu, ölçüm, güvenlik, ilişkilendirme ve sahtekârlığın önlenmesi için
 cihaz veya uygulama tanımlayıcıları, IP adresinden türetilen yaklaşık konum, reklam etkileşimleri,

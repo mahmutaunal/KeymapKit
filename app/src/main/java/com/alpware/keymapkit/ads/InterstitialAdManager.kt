@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
-import android.os.SystemClock
 import androidx.core.content.edit
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -27,14 +26,12 @@ class InterstitialAdManager(
 ) : DefaultLifecycleObserver {
     private val preferences = activity.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     private val handler = Handler(Looper.getMainLooper())
-    private val sessionStartedAtElapsedMs = SystemClock.elapsedRealtime()
     private val retryRunnable = Runnable { preload() }
 
     private var interstitialAd: InterstitialAd? = null
     private var isLoading = false
     private var isForeground = false
     private var retryAttempt = 0
-    private var shownThisSession = 0
 
     init {
         lifecycleOwner.lifecycle.addObserver(this)
@@ -61,13 +58,16 @@ class InterstitialAdManager(
     }
 
     fun recordLayoutChange() {
-        val config = runtimeConfig()
         val count = InterstitialFrequencyPolicy.nextActionCount(
             preferences.getInt(KEY_ACTION_COUNT, 0),
-            config.interstitialActionsRequired,
+            AdRuntimeConfig.INTERSTITIAL_ACTIONS_REQUIRED,
         )
         preferences.edit { putInt(KEY_ACTION_COUNT, count) }
-        if (InterstitialFrequencyPolicy.isEligible(count, config.interstitialActionsRequired)) {
+        if (InterstitialFrequencyPolicy.isEligible(
+                count,
+                AdRuntimeConfig.INTERSTITIAL_ACTIONS_REQUIRED,
+            )
+        ) {
             preload()
         }
     }
@@ -130,13 +130,7 @@ class InterstitialAdManager(
             return
         }
 
-        preferences.edit {
-            putInt(KEY_ACTION_COUNT, 0)
-            putLong(KEY_LAST_SHOWN_AT, System.currentTimeMillis())
-            putLong(KEY_DAY_BUCKET, currentDayBucket())
-            putInt(KEY_SHOWN_TODAY, shownToday() + 1)
-        }
-        shownThisSession += 1
+        preferences.edit { putInt(KEY_ACTION_COUNT, 0) }
         interstitialAd = null
         handler.removeCallbacks(retryRunnable)
         ad.fullScreenContentCallback = object : FullScreenContentCallback() {
@@ -184,20 +178,9 @@ class InterstitialAdManager(
         if (!config.interstitialEnabled || trafficGuard.isSuspended(AdFormat.INTERSTITIAL)) {
             return false
         }
-        if (!InterstitialFrequencyPolicy.isEligible(
-                preferences.getInt(KEY_ACTION_COUNT, 0),
-                config.interstitialActionsRequired,
-            )
-        ) return false
-        if (SystemClock.elapsedRealtime() - sessionStartedAtElapsedMs <
-            config.interstitialMinimumSessionAgeMs
-        ) return false
-        if (shownThisSession >= config.interstitialMaxPerSession) return false
-        if (shownToday() >= config.interstitialMaxPerDay) return false
-        return InterstitialFrequencyPolicy.isCooldownComplete(
-            nowMs = System.currentTimeMillis(),
-            lastShownMs = preferences.getLong(KEY_LAST_SHOWN_AT, 0L),
-            cooldownMs = config.interstitialCooldownMs,
+        return InterstitialFrequencyPolicy.isEligible(
+            preferences.getInt(KEY_ACTION_COUNT, 0),
+            AdRuntimeConfig.INTERSTITIAL_ACTIONS_REQUIRED,
         )
     }
 
@@ -211,22 +194,9 @@ class InterstitialAdManager(
         handler.postDelayed(retryRunnable, delayMs)
     }
 
-    private fun shownToday(): Int =
-        if (preferences.getLong(KEY_DAY_BUCKET, -1L) == currentDayBucket()) {
-            preferences.getInt(KEY_SHOWN_TODAY, 0)
-        } else {
-            0
-        }
-
-    private fun currentDayBucket(): Long = System.currentTimeMillis() / DAY_MS
-
     private companion object {
         const val PREFS_NAME = "ad_frequency"
         const val KEY_ACTION_COUNT = "completed_layout_changes"
-        const val KEY_LAST_SHOWN_AT = "last_interstitial_shown_at"
-        const val KEY_DAY_BUCKET = "interstitial_day_bucket"
-        const val KEY_SHOWN_TODAY = "interstitial_shown_today"
         const val PLACEMENT = "layout_manager_exit"
-        const val DAY_MS = 24 * 60 * 60 * 1000L
     }
 }

@@ -55,10 +55,10 @@ KeymapKit simply provides additional **hardware keyboard layouts** that Android 
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="assets/screenshots/en/1.png" width="200"/>
-  <img src="assets/screenshots/en/2.png" width="200"/>
-  <img src="assets/screenshots/en/3.png" width="200"/>
-  <img src="assets/screenshots/en/4.png" width="200"/>
+  <img src="assets/store/en/1.png" width="200"/>
+  <img src="assets/store/en/2.png" width="200"/>
+  <img src="assets/store/en/3.png" width="200"/>
+  <img src="assets/store/en/4.png" width="200"/>
 </p>
 
 Current screens include:
@@ -318,15 +318,25 @@ The official Google Play release is supported by Google AdMob. Debug builds use 
 sample ad identifiers, while release builds use the maintainer's production identifiers.
 Forks should replace or disable the release identifiers before publishing their own builds.
 
+Users can unlock **Premium** with the non-consumable Google Play product `premium_lifetime`.
+Premium is a one-time purchase whose only benefit is removing all ads. Purchases are restored from
+the current Google Play account and cached locally so an already confirmed entitlement remains
+available offline.
+
+For ad-free Premium testing, change only `keymapkit.premium.test=true` in `gradle.properties` and
+rebuild the debug app. The override is guarded by `BuildConfig.DEBUG`, so it cannot unlock Premium
+in a release build. A one-off debug build can use `-Pkeymapkit.premium.test=true` instead.
+
 A fixed 320x50 banner slot is reserved at the bottom and centered horizontally, so content never
 jumps when an ad loads.
 Banner and interstitial loads use lifecycle-aware bounded exponential backoff and a device-local
-circuit breaker. Interstitials default to seven completed keyboard-layout changes, a two-minute
-minimum session age, a fifteen-minute cooldown, at most one display per session, and at most two
-per day. Remote Config can disable formats or make these rules stricter, but cannot cross the
-immutable safety limits compiled into the app.
+circuit breaker. Interstitials are eligible after every three completed keyboard-layout changes;
+there is no minimum session age, display cooldown, per-session cap, or daily impression cap. Remote
+Config can disable either ad format; the three-change threshold is fixed in the client.
 
 Firebase Analytics records aggregate ad operations for traffic-quality monitoring. Country, app
 version and acquisition source are supplied by Firebase's standard reporting dimensions; custom
 events add ad format, placement, operation, load errors and local safety alerts. See
 [`docs/ADMOB_OPERATIONS.md`](docs/ADMOB_OPERATIONS.md) for the required console setup.
+See [`docs/PREMIUM_BILLING.md`](docs/PREMIUM_BILLING.md) for Play Console product setup, testing,
+security boundaries, and the launch-price recommendation.

@@ -27,12 +27,16 @@ class AdTrafficGuard(context: Context) {
 
     @Synchronized
     fun recordImpression(format: AdFormat, nowMs: Long = System.currentTimeMillis()): Boolean {
-        val limit = when (format) {
-            AdFormat.BANNER -> MAX_BANNER_IMPRESSIONS_PER_HOUR
-            AdFormat.INTERSTITIAL -> MAX_INTERSTITIAL_IMPRESSIONS_PER_DAY
-        }
-        val window = if (format == AdFormat.BANNER) HOUR_MS else DAY_MS
-        return if (incrementWindow(format, "impression", window, limit, nowMs)) {
+        if (format == AdFormat.INTERSTITIAL) return true
+        return if (
+            incrementWindow(
+                format,
+                "impression",
+                HOUR_MS,
+                MAX_BANNER_IMPRESSIONS_PER_HOUR,
+                nowMs,
+            )
+        ) {
             true
         } else {
             suspend(format, nowMs)
@@ -87,7 +91,6 @@ class AdTrafficGuard(context: Context) {
         const val MAX_BANNER_EXPLICIT_LOADS_PER_HOUR = 6
         const val MAX_INTERSTITIAL_EXPLICIT_LOADS_PER_HOUR = 4
         const val MAX_BANNER_IMPRESSIONS_PER_HOUR = 30
-        const val MAX_INTERSTITIAL_IMPRESSIONS_PER_DAY = 2
         const val MAX_CLICKS_PER_DAY = 2
     }
 }

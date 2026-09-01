@@ -40,6 +40,8 @@ import androidx.compose.material.icons.outlined.RateReview
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.Storefront
 import androidx.compose.material.icons.outlined.SystemUpdate
+import androidx.compose.material.icons.outlined.Restore
+import androidx.compose.material.icons.outlined.WorkspacePremium
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -70,6 +72,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import com.alpware.keymapkit.BuildConfig
 import com.alpware.keymapkit.R
+import com.alpware.keymapkit.billing.PremiumStoreStatus
 import com.alpware.keymapkit.ui.theme.AppThemeMode
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -85,6 +88,13 @@ fun SettingsScreen(
     onLanguageChange: (String?) -> Unit = {},
     showPrivacyOptions: Boolean = false,
     onPrivacyOptions: () -> Unit = {},
+    isPremium: Boolean = false,
+    premiumPrice: String? = null,
+    premiumStoreStatus: PremiumStoreStatus = PremiumStoreStatus.CONNECTING,
+    premiumOperationInProgress: Boolean = false,
+    premiumTestMode: Boolean = false,
+    onBuyPremium: () -> Unit = {},
+    onRestorePremium: () -> Unit = {},
     appName: String? = null,
     appTagline: String? = null,
     developerName: String? = null,
@@ -167,6 +177,41 @@ fun SettingsScreen(
                         subtitle = languageLabel(languageTag),
                         onClick = { preferenceDialog = PreferenceDialog.Language }
                     )
+                }
+            }
+            item {
+                SettingsSection(
+                    title = stringResource(R.string.settings_section_premium),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    val purchaseEnabled = !isPremium && !premiumOperationInProgress &&
+                        premiumStoreStatus == PremiumStoreStatus.READY && premiumPrice != null
+                    SettingsRow(
+                        leading = Icons.Outlined.WorkspacePremium,
+                        title = if (isPremium) {
+                            stringResource(R.string.settings_item_premium_active)
+                        } else {
+                            stringResource(R.string.settings_item_remove_ads)
+                        },
+                        subtitle = premiumSubtitle(
+                            isPremium = isPremium,
+                            price = premiumPrice,
+                            status = premiumStoreStatus,
+                            operationInProgress = premiumOperationInProgress,
+                            testMode = premiumTestMode,
+                        ),
+                        subtitleMaxLines = 3,
+                        onClick = if (purchaseEnabled) onBuyPremium else null,
+                    )
+                    if (!isPremium && !premiumTestMode) {
+                        SettingsDivider()
+                        SettingsRow(
+                            leading = Icons.Outlined.Restore,
+                            title = stringResource(R.string.settings_item_restore_premium),
+                            subtitle = stringResource(R.string.settings_value_restore_premium),
+                            onClick = if (!premiumOperationInProgress) onRestorePremium else null,
+                        )
+                    }
                 }
             }
             item {
@@ -472,6 +517,24 @@ private fun languageLabel(languageTag: String?): String = when (languageTag?.sub
     LANGUAGE_TURKISH -> stringResource(R.string.settings_language_turkish)
     LANGUAGE_ENGLISH -> stringResource(R.string.settings_language_english)
     else -> stringResource(R.string.settings_language_system)
+}
+
+@Composable
+private fun premiumSubtitle(
+    isPremium: Boolean,
+    price: String?,
+    status: PremiumStoreStatus,
+    operationInProgress: Boolean,
+    testMode: Boolean,
+): String = when {
+    isPremium && testMode -> stringResource(R.string.settings_value_premium_test)
+    isPremium -> stringResource(R.string.settings_value_premium_active)
+    operationInProgress -> stringResource(R.string.settings_value_premium_processing)
+    status == PremiumStoreStatus.PENDING -> stringResource(R.string.settings_value_premium_pending)
+    status == PremiumStoreStatus.UNAVAILABLE ->
+        stringResource(R.string.settings_value_premium_unavailable)
+    price != null -> stringResource(R.string.settings_value_premium_price, price)
+    else -> stringResource(R.string.settings_value_premium_connecting)
 }
 
 @Composable

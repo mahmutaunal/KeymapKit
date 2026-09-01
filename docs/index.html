@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#225dc2">
+  <meta name="description" content="KeymapKit gizlilik politikası ve uygulamanın veri işleme uygulamaları.">
+  <title>Gizlilik Politikası — KeymapKit</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fc;
+      --surface: rgba(255, 255, 255, .88);
+      --surface-solid: #fff;
+      --text: #172033;
+      --muted: #5d687c;
+      --line: #dce3ef;
+      --brand: #225dc2;
+      --brand-dark: #18478f;
+      --brand-soft: #e8f0ff;
+      --shadow: 0 18px 55px rgba(23, 49, 97, .11);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --bg: #0c1220;
+        --surface: rgba(20, 29, 48, .9);
+        --surface-solid: #141d30;
+        --text: #edf2ff;
+        --muted: #aab6cc;
+        --line: #293650;
+        --brand: #79a8ff;
+        --brand-dark: #a9c7ff;
+        --brand-soft: #172c50;
+        --shadow: 0 18px 55px rgba(0, 0, 0, .28);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(61, 126, 243, .14), transparent 28rem),
+        radial-gradient(circle at 100% 15%, rgba(132, 82, 222, .09), transparent 25rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--brand-dark); text-underline-offset: .18em; }
+    a:hover { text-decoration-thickness: 2px; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+
+    .topbar {
+      width: min(100% - 32px, 920px);
+      margin: 22px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--text);
+      font-weight: 750;
+      letter-spacing: -.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: white;
+      background: linear-gradient(145deg, #3173df, #1d4da8);
+      box-shadow: 0 8px 18px rgba(34, 93, 194, .22);
+    }
+
+    .language-switcher {
+      display: flex;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-solid);
+    }
+
+    .language-switcher button {
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 12px;
+      color: var(--muted);
+      background: transparent;
+      font: inherit;
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .language-switcher button[aria-pressed="true"] {
+      color: white;
+      background: var(--brand);
+    }
+
+    main {
+      width: min(100% - 32px, 920px);
+      margin: 34px auto 64px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(30px, 6vw, 58px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      top: -105px;
+      right: -70px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(47, 116, 232, .25), rgba(127, 72, 220, .12));
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--brand-dark);
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin: 0;
+      font-size: clamp(2.15rem, 6vw, 4.15rem);
+      line-height: 1.06;
+      letter-spacing: -.055em;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.2vw, 1.14rem);
+    }
+
+    .updated {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+      font-size: .82rem;
+      font-weight: 700;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .summary article {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+
+    .summary strong { display: block; margin-bottom: 4px; font-size: .96rem; }
+    .summary span { color: var(--muted); font-size: .88rem; line-height: 1.5; }
+
+    .policy {
+      padding: clamp(25px, 6vw, 58px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--surface-solid);
+      box-shadow: var(--shadow);
+    }
+
+    section + section {
+      margin-top: 36px;
+      padding-top: 36px;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 13px;
+      font-size: clamp(1.25rem, 3vw, 1.62rem);
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+
+    p { margin: 0 0 14px; }
+    p:last-child { margin-bottom: 0; }
+    ul { margin: 10px 0 0; padding-left: 1.25rem; }
+    li + li { margin-top: 10px; }
+    li::marker { color: var(--brand); }
+
+    .notice {
+      margin: 18px 0 0;
+      padding: 17px 18px;
+      border-left: 4px solid var(--brand);
+      border-radius: 0 12px 12px 0;
+      background: var(--brand-soft);
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--bg);
+    }
+
+    .contact-card span { display: block; color: var(--muted); font-size: .84rem; }
+    .contact-card a { font-weight: 750; overflow-wrap: anywhere; }
+
+    footer {
+      padding: 26px 0 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: .84rem;
+    }
+
+    [data-language] { display: none; }
+    [data-language].active { display: block; }
+
+    @media (max-width: 680px) {
+      .topbar { margin-top: 14px; }
+      main { margin-top: 22px; }
+      .summary { grid-template-columns: 1fr; }
+      .hero, .policy { border-radius: 22px; }
+      .contact-card { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media print {
+      body { background: #fff; color: #111; }
+      .topbar, .summary, footer { display: none; }
+      main { width: 100%; margin: 0; }
+      .hero, .policy { border: 0; box-shadow: none; padding: 20px; }
+      .hero::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" aria-label="KeymapKit">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="6" width="21" height="14" rx="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M6 10h1m3 0h1m3 0h1m3 0h1M6 14h1m3 0h1m3 0h5M7 17h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      KeymapKit
+    </div>
+    <div class="language-switcher" role="group" aria-label="Dil seçimi">
+      <button type="button" data-set-language="tr" aria-pressed="true">TR</button>
+      <button type="button" data-set-language="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <div data-language="tr" class="active">
+      <header class="hero">
+        <p class="eyebrow">Gizliliğiniz önemlidir</p>
+        <h1>Gizlilik Politikası</h1>
+        <p class="lead">KeymapKit, fiziksel klavye düzenlerini cihazınızda sunar. Klavye girdilerinizi okumaz, kaydetmez veya iletmez.</p>
+        <span class="updated">Son güncelleme: 1 Eylül 2026</span>
+      </header>
+
+      <div class="summary" aria-label="Özet">
+        <article><strong>Klavye girdisi yok</strong><span>Yazdığınız metin toplanmaz veya bir sunucuya gönderilmez.</span></article>
+        <article><strong>Hesap gerektirmez</strong><span>KeymapKit hesabı oluşturmaz ve kişisel profil tutmaz.</span></article>
+        <article><strong>Cihaz öncelikli</strong><span>Düzen seçimleri ve uygulama tercihleri cihazınızda saklanır.</span></article>
+      </div>
+
+      <article class="policy">
+        <section>
+          <h2>1. Kapsam</h2>
+          <p>Bu politika, Alpware Studio tarafından sunulan Android uygulaması KeymapKit'in verileri nasıl işlediğini açıklar. Uygulamanın temel işlevi, Android cihazlara fiziksel klavye düzenleri sağlamaktır.</p>
+          <p class="notice"><strong>Önemli:</strong> KeymapKit bir ekran klavyesi (IME) veya Erişilebilirlik Hizmeti değildir. Fiziksel klavyeyle yazdığınız tuşları ya da diğer uygulamalardaki metinleri okuyamaz.</p>
+        </section>
+
+        <section>
+          <h2>2. Cihazda saklanan bilgiler</h2>
+          <p>Uygulama, aşağıdaki sınırlı bilgileri yalnızca cihazınızdaki özel uygulama depolama alanında saklar:</p>
+          <ul>
+            <li>Seçtiğiniz klavye düzenlerinin kimlikleri ve görünüm tercihleriniz.</li>
+            <li>Reklam gösterim sıklığını ve olağan dışı reklam trafiğini sınırlayan yerel sayaçlar.</li>
+            <li>İsteğe bağlı Premium satın alımının etkin olup olmadığını belirten yerel bir durum kaydı.</li>
+            <li>Uygulama içi değerlendirme isteğinin uygun zamanda gösterilmesi için anonim kullanım sayaçları.</li>
+          </ul>
+          <p>Yazım testi alanına girdiğiniz metin yalnızca ekran açıkken bellekte tutulur; kalıcı olarak kaydedilmez ve iletilmez. Yerel veriler uygulama verileri temizlendiğinde veya uygulama kaldırıldığında silinir.</p>
+        </section>
+
+        <section>
+          <h2>3. Reklamlar ve izin tercihleri</h2>
+          <p>Google Play üzerinden dağıtılan resmî sürüm, banner ve geçiş reklamları göstermek için <strong>Google AdMob</strong> kullanır. Gerekli bölgelerde <strong>Google User Messaging Platform (UMP)</strong>, reklam ve gizlilik tercihlerinizi alır ve yönetir. UMP gerekli gördüğünde bu tercihleri Ayarlar ekranından yeniden açabilirsiniz.</p>
+          <p>Google ve reklam/ölçüm iş ortakları; reklam sunumu, ölçüm, ilişkilendirme, güvenlik ve sahtekârlığı önleme amacıyla cihaz veya uygulama tanımlayıcıları, IP adresinden türetilen yaklaşık konum, reklam etkileşimleri, tanılama bilgileri, uygulama sürümü ve edinme kaynağı gibi bilgileri işleyebilir.</p>
+          <p>Bu işlemler Google'ın politikalarına ve size sunulan izin seçeneklerine tabidir. Ayrıntılar için <a href="https://policies.google.com/technologies/partner-sites?hl=tr" rel="noopener noreferrer">Google'ın iş ortağı sitelerindeki veri kullanımı açıklamasını</a> inceleyebilirsiniz.</p>
+        </section>
+
+        <section>
+          <h2>4. Analiz ve uzaktan yapılandırma</h2>
+          <p><strong>Firebase Analytics</strong>; reklam biçimi, yükleme sonucu, gösterim, tıklama ve tahmini gelir gibi toplu reklam işlemlerini kaydeder. Firebase raporları ülke, uygulama sürümü, platform ve edinme kaynağı gibi otomatik boyutlar içerebilir.</p>
+          <p>KeymapKit; klavye girdilerini, yazım testi içeriğini, seçilen düzenlerin kimliklerini, e-posta adreslerini, kişileri, dosyaları veya kesin konumu Firebase Analytics'e göndermez.</p>
+          <p><strong>Firebase Remote Config</strong>, bir reklam biçimini uzaktan kapatmak veya uygulamanın yerleşik reklam sıklığı politikasını daha sıkı hâle getirmek için kullanılır. Normal yapılandırma istekleri 12 saatlik önbellek aralığıyla sınırlandırılır.</p>
+        </section>
+
+        <section>
+          <h2>5. Premium satın alımı</h2>
+          <p>İsteğe bağlı, tek seferlik Premium satın alımı <strong>Google Play Billing</strong> tarafından işlenir. Uygulama; yerelleştirilmiş ürün fiyatını ve mevcut Play hesabının satın alma durumunu Google Play'den sorgular, tamamlanan satın alımları onaylar ve çevrimdışı kullanım için cihazda yalnızca Premium hakkının etkinliğini saklar.</p>
+          <p>KeymapKit'in bir satın alma sunucusu yoktur ve ödeme kartı bilgilerinizi toplamaz. Ödeme ve satın alma kayıtları Google Play tarafından <a href="https://policies.google.com/privacy?hl=tr" rel="noopener noreferrer">Google Gizlilik Politikası</a> kapsamında işlenir.</p>
+        </section>
+
+        <section>
+          <h2>6. İzinler</h2>
+          <p>Uygulama, Google hizmetleri ve ağ durumunun kontrolü için internet ve ağ durumu izinlerini kullanır. Mikrofon, kamera, kişiler, dosyalar veya kesin konum izni istemez. Klavye düzeni sağlayıcıları Android tarafından sistem düzeyinde keşfedilir; bu işlem KeymapKit'e yazdığınız metne erişim vermez.</p>
+        </section>
+
+        <section>
+          <h2>7. Veri paylaşımı ve saklama</h2>
+          <p>KeymapKit geliştiricisi kişisel verilerinizi satmaz. Yukarıda açıklanan Google hizmetleri, kendi politikaları uyarınca verileri işleyebilir ve farklı ülkelerdeki altyapılara aktarabilir. Bu üçüncü tarafların veri saklama süreleri ve silme süreçleri kendi politikalarına tabidir.</p>
+          <p>Reklam tercihlerinizi, uygulamada Ayarlar → Reklam gizliliği seçenekleri yolunu kullanarak yönetebilirsiniz (bu seçenek UMP tarafından gerekli görüldüğünde gösterilir). Android ayarlarından uygulama verilerini temizleyerek cihazdaki yerel kayıtları silebilirsiniz.</p>
+        </section>
+
+        <section>
+          <h2>8. Çocukların gizliliği</h2>
+          <p>KeymapKit özellikle çocuklara yönelik değildir. Bir çocuğun uygulama aracılığıyla bize kişisel bilgi gönderdiğini düşünüyorsanız lütfen aşağıdaki e-posta adresinden bizimle iletişime geçin.</p>
+        </section>
+
+        <section>
+          <h2>9. Değişiklikler</h2>
+          <p>Uygulamadaki hizmetler veya yasal gereklilikler değiştiğinde bu politika güncellenebilir. Güncel sürüm her zaman bu sayfada yayımlanır ve “Son güncelleme” tarihi değiştirilir.</p>
+        </section>
+
+        <section>
+          <h2>10. İletişim</h2>
+          <p>Bu politika, verileriniz veya gizlilik tercihlerinize ilişkin sorularınız için geliştiriciyle iletişime geçebilirsiniz.</p>
+          <div class="contact-card">
+            <div><span>Geliştirici</span><strong>Alpware Studio</strong></div>
+            <div><span>E-posta</span><a href="mailto:contact@alpwarestudio.com">contact@alpwarestudio.com</a></div>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <div data-language="en" lang="en">
+      <header class="hero">
+        <p class="eyebrow">Your privacy matters</p>
+        <h1>Privacy Policy</h1>
+        <p class="lead">KeymapKit provides physical keyboard layouts on your device. It does not read, store, or transmit your keyboard input.</p>
+        <span class="updated">Last updated: September 1, 2026</span>
+      </header>
+
+      <div class="summary" aria-label="Summary">
+        <article><strong>No keyboard input</strong><span>What you type is never collected or sent to a server.</span></article>
+        <article><strong>No account required</strong><span>KeymapKit creates no account and keeps no personal profile.</span></article>
+        <article><strong>Device first</strong><span>Layout selections and app preferences remain on your device.</span></article>
+      </div>
+
+      <article class="policy">
+        <section>
+          <h2>1. Scope</h2>
+          <p>This policy explains how KeymapKit, an Android application provided by Alpware Studio, handles data. The app's core purpose is to provide physical keyboard layouts to Android devices.</p>
+          <p class="notice"><strong>Important:</strong> KeymapKit is not an on-screen keyboard (IME) or Accessibility Service. It cannot read physical keystrokes or text entered in other apps.</p>
+        </section>
+
+        <section>
+          <h2>2. Information stored on your device</h2>
+          <p>The app stores only the following limited information in its private on-device storage:</p>
+          <ul>
+            <li>Identifiers of selected keyboard layouts and appearance preferences.</li>
+            <li>Local counters that limit ad frequency and abnormal advertising traffic.</li>
+            <li>A local record indicating whether the optional Premium purchase is active.</li>
+            <li>Anonymous engagement counters used to time the in-app review prompt.</li>
+          </ul>
+          <p>Text entered in the typing-test field is held in memory only while the screen is open; it is not persisted or transmitted. Local data is removed when you clear the app's data or uninstall it.</p>
+        </section>
+
+        <section>
+          <h2>3. Advertising and consent choices</h2>
+          <p>The official Google Play build uses <strong>Google AdMob</strong> to display banner and interstitial ads. Where required, the <strong>Google User Messaging Platform (UMP)</strong> obtains and manages advertising and privacy choices. When required by UMP, you can reopen these choices from Settings.</p>
+          <p>Google and its advertising or measurement partners may process device or app identifiers, IP-derived approximate location, ad interactions, diagnostics, app version, and acquisition information for ad delivery, measurement, attribution, security, and fraud prevention.</p>
+          <p>This processing is subject to Google's policies and the consent choices made available to you. Learn more in <a href="https://policies.google.com/technologies/partner-sites?hl=en" rel="noopener noreferrer">Google's explanation of data use on partner sites and apps</a>.</p>
+        </section>
+
+        <section>
+          <h2>4. Analytics and remote configuration</h2>
+          <p><strong>Firebase Analytics</strong> records aggregate advertising operations such as ad format, load result, impression, click, and estimated revenue. Firebase reports may include automatically available dimensions such as country, app version, platform, and acquisition source.</p>
+          <p>KeymapKit does not send keyboard input, typing-test content, selected layout identifiers, email addresses, contacts, files, or precise location to Firebase Analytics.</p>
+          <p><strong>Firebase Remote Config</strong> is used only to disable an ad format or make the app's built-in ad-frequency policy stricter. Normal configuration fetches are limited by a 12-hour cache interval.</p>
+        </section>
+
+        <section>
+          <h2>5. Premium purchase</h2>
+          <p>The optional one-time Premium purchase is processed by <strong>Google Play Billing</strong>. The app queries Google Play for the localized product price and current Play account's purchase status, acknowledges completed purchases, and stores only whether Premium is active on the device for offline use.</p>
+          <p>KeymapKit has no purchase backend and does not collect payment card details. Google Play processes payment and purchase records under the <a href="https://policies.google.com/privacy?hl=en" rel="noopener noreferrer">Google Privacy Policy</a>.</p>
+        </section>
+
+        <section>
+          <h2>6. Permissions</h2>
+          <p>The app uses internet and network-state permissions for Google services and connectivity checks. It does not request access to your microphone, camera, contacts, files, or precise location. Android discovers keyboard-layout providers at the system level; this does not give KeymapKit access to what you type.</p>
+        </section>
+
+        <section>
+          <h2>7. Data sharing and retention</h2>
+          <p>The KeymapKit developer does not sell your personal data. The Google services described above may process data under their own policies and transfer it to infrastructure in other countries. Their retention periods and deletion processes are governed by their respective policies.</p>
+          <p>You can manage advertising preferences through Settings → Ad privacy choices when UMP requires that option. You can remove local app records by clearing KeymapKit's data in Android settings.</p>
+        </section>
+
+        <section>
+          <h2>8. Children's privacy</h2>
+          <p>KeymapKit is not specifically directed to children. If you believe that a child has sent us personal information through the app, please contact us at the address below.</p>
+        </section>
+
+        <section>
+          <h2>9. Changes to this policy</h2>
+          <p>We may update this policy when the app's services or legal requirements change. The current version will always be published on this page with a revised “Last updated” date.</p>
+        </section>
+
+        <section>
+          <h2>10. Contact</h2>
+          <p>Contact the developer if you have questions about this policy, your data, or your privacy choices.</p>
+          <div class="contact-card">
+            <div><span>Developer</span><strong>Alpware Studio</strong></div>
+            <div><span>Email</span><a href="mailto:contact@alpwarestudio.com">contact@alpwarestudio.com</a></div>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <footer>© 2026 Alpware Studio · KeymapKit</footer>
+  </main>
+
+  <script>
+    (() => {
+      const buttons = document.querySelectorAll('[data-set-language]');
+      const panels = document.querySelectorAll('[data-language]');
+
+      function setLanguage(language) {
+        const activeLanguage = language === 'en' ? 'en' : 'tr';
+        document.documentElement.lang = activeLanguage;
+        document.title = activeLanguage === 'tr'
+          ? 'Gizlilik Politikası — KeymapKit'
+          : 'Privacy Policy — KeymapKit';
+
+        panels.forEach(panel => {
+          panel.classList.toggle('active', panel.dataset.language === activeLanguage);
+        });
+        buttons.forEach(button => {
+          button.setAttribute('aria-pressed', String(button.dataset.setLanguage === activeLanguage));
+        });
+
+        try { localStorage.setItem('keymapkit-policy-language', activeLanguage); } catch (_) {}
+      }
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => setLanguage(button.dataset.setLanguage));
+      });
+
+      let savedLanguage;
+      try { savedLanguage = localStorage.getItem('keymapkit-policy-language'); } catch (_) {}
+      const browserLanguage = (navigator.language || '').toLowerCase().startsWith('tr') ? 'tr' : 'en';
+      const initialLanguage = savedLanguage || browserLanguage;
+      setLanguage(initialLanguage);
+    })();
+  </script>
+</body>
+</html>

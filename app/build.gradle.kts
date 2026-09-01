@@ -4,6 +4,12 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+val premiumTestMode = providers.gradleProperty("keymapkit.premium.test").getOrElse("false").also {
+    require(it == "true" || it == "false") {
+        "keymapkit.premium.test must be either true or false"
+    }
+}
+
 // Firebase remains optional for local/open-source builds. Dropping the Firebase console's
 // google-services.json into app/ activates Analytics and Remote Config for release builds.
 if (file("google-services.json").exists()) {
@@ -20,24 +26,26 @@ extensions.configure<com.android.build.api.dsl.ApplicationExtension>("android") 
         applicationId = "com.alpware.keymapkit"
         minSdk = 28
         targetSdk = 37
-        versionCode = 13
+        versionCode = 14
         versionName = "1.2.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders["admobAppId"] = ""
-        buildConfigField("String", "ADMOB_BANNER_ID", "")
-        buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "")
+        buildConfigField("String", "ADMOB_BANNER_ID", "\"\"")
+        buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"\"")
+        buildConfigField("boolean", "PREMIUM_TEST_MODE", "false")
     }
 
     buildTypes {
         debug {
             // Google sample IDs protect the open-source/debug workflow from invalid traffic.
+            buildConfigField("boolean", "PREMIUM_TEST_MODE", premiumTestMode)
         }
         release {
             manifestPlaceholders["admobAppId"] = ""
-            buildConfigField("String", "ADMOB_BANNER_ID", "")
-            buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "")
+            buildConfigField("String", "ADMOB_BANNER_ID", "\"\"")
+            buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"\"")
             isMinifyEnabled = true
             isShrinkResources = true
             isDebuggable = false
@@ -85,6 +93,7 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.config)
     implementation(libs.androidx.concurrent.futures)
+    implementation(libs.billing)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

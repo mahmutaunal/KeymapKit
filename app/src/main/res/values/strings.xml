@@ -217,6 +217,7 @@
     <string name="settings_section_developer">Geliştirici</string>
     <string name="settings_section_support">Destek</string>
     <string name="settings_section_legal">Yasal</string>
+    <string name="settings_section_premium">Premium</string>
 
     <!-- Settings - items -->
     <string name="settings_item_version">Sürüm</string>
@@ -232,6 +233,9 @@
 
     <string name="settings_item_privacy_policy">Gizlilik Politikası</string>
     <string name="settings_item_open_source_notices">Açık Kaynak Bildirimleri</string>
+    <string name="settings_item_remove_ads">Reklamları ömür boyu kaldır</string>
+    <string name="settings_item_premium_active">Premium etkin</string>
+    <string name="settings_item_restore_premium">Satın alımı geri yükle</string>
 
     <string name="settings_dialog_theme_title">Tema seçin</string>
     <string name="settings_theme_system">Sistem varsayılanı</string>
@@ -248,8 +252,16 @@
     <string name="settings_value_github_issues">GitHub Issues</string>
     <string name="settings_value_send_play_store_link">Play Store bağlantısını gönder</string>
     <string name="settings_value_leave_review">Google Play mağaza sayfasını aç</string>
-    <string name="settings_value_privacy_short">Çevrimdışı. Veri toplanmaz.</string>
+    <string name="settings_value_privacy_short">Cihaz öncelikli kullanım ve Google hizmetleri hakkında ayrıntılar</string>
     <string name="settings_value_third_party_licenses">Üçüncü taraf lisansları</string>
+    <string name="settings_value_premium_price">Tek seferlik %1$s — abonelik yok</string>
+    <string name="settings_value_premium_active">Reklamlar bu Google Play hesabında kalıcı olarak kaldırıldı.</string>
+    <string name="settings_value_premium_test">Debug Premium test modu etkin; gerçek satın alma yapılmadı.</string>
+    <string name="settings_value_premium_connecting">Google Play fiyatı yükleniyor…</string>
+    <string name="settings_value_premium_processing">Satın alma durumu kontrol ediliyor…</string>
+    <string name="settings_value_premium_pending">Ödeme beklemede. Premium, ödeme tamamlanınca etkinleşecek.</string>
+    <string name="settings_value_premium_unavailable">Google Play satın alma hizmetine şu anda ulaşılamıyor.</string>
+    <string name="settings_value_restore_premium">Bu Google Play hesabındaki Premium hakkını yeniden kontrol et</string>
 
     <!-- Settings - share -->
     <string name="settings_share_title">%1$s paylaş</string>
@@ -272,10 +284,11 @@
         • Google UMP, gerekli bölgelerde reklam ve gizlilik tercihlerinizi yönetir.
         • Firebase Analytics; reklam biçimi ve etkileşim olaylarıyla birlikte ülke, uygulama sürümü ve edinme kaynağı gibi toplu boyutları raporlayabilir.
         • Firebase Remote Config reklamları uzaktan kapatmak veya sıklığı azaltmak için kullanılır.
+        • Google Play Billing, isteğe bağlı tek seferlik Premium satın alımını işler.
         • Yazım testi metni ve klavye girdileri kaydedilmez veya iletilmez.
 
         Detaylar
-        Seçtiğiniz klavye düzenleri yalnızca cihazınızda saklanır. Google reklam ve ölçüm hizmetleri; reklam sunumu, sahtekârlığın önlenmesi, toplu kullanım ölçümü ve edinme raporlaması için cihaz ya da uygulama tanımlayıcıları, IP adresinden türetilen yaklaşık ülke, reklam etkileşimleri ve uygulama sürümü gibi verileri Google politikalarına uygun şekilde işleyebilir. Gizlilik seçenekleri gerektiğinde Ayarlar ekranından değiştirilebilir.
+        Seçtiğiniz klavye düzenleri yalnızca cihazınızda saklanır. Google reklam ve ölçüm hizmetleri; reklam sunumu, sahtekârlığın önlenmesi, toplu kullanım ölçümü ve edinme raporlaması için cihaz ya da uygulama tanımlayıcıları, IP adresinden türetilen yaklaşık ülke, reklam etkileşimleri ve uygulama sürümü gibi verileri Google politikalarına uygun şekilde işleyebilir. Premium ödemesi Google Play tarafından işlenir; uygulama kart bilgisi toplamaz ve cihazda yalnızca Premium hakkını saklar. Gizlilik seçenekleri gerektiğinde Ayarlar ekranından değiştirilebilir.
 
         Sorularınız için Ayarlar bölümündeki e-posta üzerinden geliştiriciye ulaşabilirsiniz.
     </string>
